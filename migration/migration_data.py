@@ -495,7 +495,7 @@ class MigrationData:  # 定义一个数据迁移类
 
 if __name__ == '__main__':
     multiprocessing.freeze_support()  # 防止windows下运行报错
-    # generate_all_table_json(source_database_type,target_database_type)
+    generate_all_table_json(source_database_type,target_database_type)
     manager = multiprocessing.Manager()
     lock = manager.Lock()
     migrate = MigrationData()
