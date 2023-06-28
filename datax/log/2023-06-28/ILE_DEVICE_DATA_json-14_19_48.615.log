@@ -1,0 +1,105 @@
+2023-06-28 14:19:48.924 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-28 14:19:48.927 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-28 14:19:48.945 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-28 14:19:48.954 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-28 14:19:48.987 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"ORG_CODE",
+						"OP_CODE",
+						"OP_NAME",
+						"DEVICE_NAME",
+						"DEVICE_MODEL",
+						"DEVICE_ID",
+						"DEVICE_STATUS",
+						"AUTHORIZER",
+						"REMARK",
+						"AUTH_REASON"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"KSCS_MOBILE_DEVICE_DATA"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"ORG_CODE",
+						"OP_CODE",
+						"OP_NAME",
+						"DEVICE_NAME",
+						"DEVICE_MODEL",
+						"DEVICE_ID",
+						"DEVICE_STATUS",
+						"AUTHORIZER",
+						"REMARK",
+						"AUTH_REASON"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"KSCS_MOBILE_DEVICE_DATA"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE KSCS_MOBILE_DEVICE_DATA"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-28 14:19:49.017 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-28 14:19:49.019 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-28 14:19:49.020 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-28 14:19:49.023 [main] INFO  JobContainer - Set jobId = 0

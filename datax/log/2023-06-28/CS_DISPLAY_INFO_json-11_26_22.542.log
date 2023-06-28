@@ -1,0 +1,106 @@
+2023-06-28 11:26:22.732 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-28 11:26:22.734 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-28 11:26:22.744 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-28 11:26:22.748 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-28 11:26:22.766 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"ACS_ID",
+						"CON_ID",
+						"PARAM_NAME",
+						"VAL_EXPR",
+						"VAL_BEX",
+						"PARAM_CODE",
+						"DYNAMIC_CHECK",
+						"VALID_RULE",
+						"VALID_PARAM",
+						"SORT_NO"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"KSCS_ACS_DISPLAY_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"ACS_ID",
+						"CON_ID",
+						"PARAM_NAME",
+						"VAL_EXPR",
+						"VAL_BEX",
+						"PARAM_CODE",
+						"DYNAMIC_CHECK",
+						"VALID_RULE",
+						"VALID_PARAM",
+						"SORT_NO"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"KSCS_ACS_DISPLAY_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE KSCS_ACS_DISPLAY_INFO"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-28 11:26:22.780 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-28 11:26:22.782 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-28 11:26:22.782 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-28 11:26:22.784 [main] INFO  JobContainer - Set jobId = 0
+2023-06-28 11:26:28.646 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.

@@ -1,0 +1,202 @@
+2023-06-21 14:37:17.826 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 14:37:17.829 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 14:37:17.838 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 14:37:17.844 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 14:37:17.860 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"BUS_CODE",
+						"BUS_NAME",
+						"BUS_TYPE",
+						"ENABLE_SOAP",
+						"ACCESS_CONTROL",
+						"DATA_OP_TYPE",
+						"REC_FLAG",
+						"GENERAL_REVIEW_KEY",
+						"LBM_CODE",
+						"VALID_PERM",
+						"ENABLE_REVIEW",
+						"NO_LOG_FIELDS"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"UPM_SYS_FUNC"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"BUS_CODE",
+						"BUS_NAME",
+						"BUS_TYPE",
+						"ENABLE_SOAP",
+						"ACCESS_CONTROL",
+						"DATA_OP_TYPE",
+						"REC_FLAG",
+						"GENERAL_REVIEW_KEY",
+						"LBM_CODE",
+						"VALID_PERM",
+						"ENABLE_REVIEW",
+						"NO_LOG_FIELDS"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_SYS_FUNC"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_SYS_FUNC"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 14:37:17.875 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 14:37:17.877 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 14:37:17.877 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 14:37:17.879 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 14:37:23.528 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 14:37:23.562 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_SYS_FUNC] has columns:[BUS_CODE,BUS_NAME,BUS_TYPE,ENABLE_SOAP,ACCESS_CONTROL,DATA_OP_TYPE,REC_FLAG,GENERAL_REVIEW_KEY,LBM_CODE,VALID_PERM,ENABLE_REVIEW,NO_LOG_FIELDS].
+2023-06-21 14:37:23.633 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_SYS_FUNC] all columns:[
+BUS_CODE,BUS_NAME,BUS_TYPE,ENABLE_SOAP,ACCESS_CONTROL,DATA_OP_TYPE,REC_FLAG,GENERAL_REVIEW_KEY,LBM_CODE,VALID_PERM,ENABLE_REVIEW,NO_LOG_FIELDS
+].
+2023-06-21 14:37:23.642 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (BUS_CODE,BUS_NAME,BUS_TYPE,ENABLE_SOAP,ACCESS_CONTROL,DATA_OP_TYPE,REC_FLAG,GENERAL_REVIEW_KEY,LBM_CODE,VALID_PERM,ENABLE_REVIEW,NO_LOG_FIELDS) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 14:37:23.643 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 14:37:23.643 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 14:37:23.643 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 14:37:23.652 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_SYS_FUNC]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 14:37:23.655 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 14:37:23.655 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-21 14:37:23.658 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 14:37:23.658 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 14:37:23.669 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 14:37:23.671 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 14:37:23.673 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 14:37:23.677 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 14:37:23.679 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 14:37:23.679 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 14:37:23.686 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 14:37:23.690 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select BUS_CODE,BUS_NAME,BUS_TYPE,ENABLE_SOAP,ACCESS_CONTROL,DATA_OP_TYPE,REC_FLAG,GENERAL_REVIEW_KEY,LBM_CODE,VALID_PERM,ENABLE_REVIEW,NO_LOG_FIELDS from UPM_SYS_FUNC 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 14:37:23.977 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (1000139)。
+2023-06-21 14:37:23.982 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (1000139)。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:291) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-06-21 14:37:23.986 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (1000139)。","record":[{"byteSize":7,"index":0,"rawData":"1000139","type":"STRING"},{"byteSize":10,"index":1,"rawData":"华西第二里联系人查询","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.988 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (99000508)。","record":[{"byteSize":8,"index":0,"rawData":"99000508","type":"STRING"},{"byteSize":4,"index":1,"rawData":"客户开户","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.989 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (99001259)。","record":[{"byteSize":8,"index":0,"rawData":"99001259","type":"STRING"},{"byteSize":6,"index":1,"rawData":"资金账号开户","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.990 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (99001326)。","record":[{"byteSize":8,"index":0,"rawData":"99001326","type":"STRING"},{"byteSize":6,"index":1,"rawData":"重要资料变更","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.990 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (AESPwdEncryptService)。","record":[{"byteSize":20,"index":0,"rawData":"AESPwdEncryptService","type":"STRING"},{"byteSize":7,"index":1,"rawData":"密码AES加密","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.991 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (AllCacheRefreshService)。","record":[{"byteSize":22,"index":0,"rawData":"AllCacheRefreshService","type":"STRING"},{"byteSize":6,"index":1,"rawData":"刷新所有缓存","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"1","type":"STRING"},{"byteSize":1,"index":5,"rawData":"4","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.993 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (C3300040)。","record":[{"byteSize":8,"index":0,"rawData":"C3300040","type":"STRING"},{"byteSize":5,"index":1,"rawData":"清算前备份","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.994 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (C3300041)。","record":[{"byteSize":8,"index":0,"rawData":"C3300041","type":"STRING"},{"byteSize":5,"index":1,"rawData":"清算后备份","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:23.996 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (C3300050)。","record":[{"byteSize":8,"index":0,"rawData":"C3300050","type":"STRING"},{"byteSize":7,"index":1,"rawData":"清算子任务查询","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":" ","type":"STRING"},{"byteSize":1,"index":5,"rawData":"0","type":"STRING"},{"byteSize":1,"index":6,"rawData":"0","type":"STRING"},{"byteSize":0,"index":7,"rawData":"","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"},{"byteSize":1,"index":9,"rawData":"0","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":0,"index":11,"type":"STRING"}],"type":"writer"}
+2023-06-21 14:37:25.005 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select BUS_CODE,BUS_NAME,BUS_TYPE,ENABLE_SOAP,ACCESS_CONTROL,DATA_OP_TYPE,REC_FLAG,GENERAL_REVIEW_KEY,LBM_CODE,VALID_PERM,ENABLE_REVIEW,NO_LOG_FIELDS from UPM_SYS_FUNC 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 14:37:25.285 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_UPM_SYS_FUNC”。不能在对象“dbo.UPM_SYS_FUNC”中插入重复键。重复键值为 (YD301100)。
+2023-06-21 14:37:25.744 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[2058]ms
+2023-06-21 14:37:25.745 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-21 14:37:33.689 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3202 records, 90282 bytes | Speed 8.82KB/s, 320 records/s | Error 3202 records, 90282 bytes |  All Task WaitWriterTime 1.242s |  All Task WaitReaderTime 0.048s | Percentage 100.00%
+2023-06-21 14:37:33.690 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-21 14:37:33.690 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3202]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 14:37:33.691 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3202 records, 90282 bytes | Speed 88.17KB/s, 3202 records/s | Error 3202 records, 90282 bytes |  All Task WaitWriterTime 1.242s |  All Task WaitReaderTime 0.048s | Percentage 100.00%
+2023-06-21 14:37:33.691 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3202]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

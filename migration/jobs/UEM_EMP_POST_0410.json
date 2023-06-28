@@ -1,0 +1,66 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "USER_CODE",
+                            "POST_ID",
+                            "GRANTOR",
+                            "GRANT_TIME",
+                            "ORG_CODE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UEM_EMP_POST_0410"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "USER_CODE",
+                            "POST_ID",
+                            "GRANTOR",
+                            "GRANT_TIME",
+                            "ORG_CODE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UEM_EMP_POST_0410"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UEM_EMP_POST_0410"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

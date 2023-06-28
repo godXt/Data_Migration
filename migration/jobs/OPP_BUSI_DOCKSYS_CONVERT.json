@@ -1,0 +1,74 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "DOCK_TYPE",
+                            "USER_TYPE",
+                            "TARGET_FIELD",
+                            "ORIGINAL_FIELD",
+                            "FIELD_NAME",
+                            "DEFAULT_VALUE",
+                            "SEQU",
+                            "DOCK_NODE_KEY"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_BUSI_DOCKSYS_CONVERT"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "DOCK_TYPE",
+                            "USER_TYPE",
+                            "TARGET_FIELD",
+                            "ORIGINAL_FIELD",
+                            "FIELD_NAME",
+                            "DEFAULT_VALUE",
+                            "SEQU",
+                            "DOCK_NODE_KEY"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_BUSI_DOCKSYS_CONVERT"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_BUSI_DOCKSYS_CONVERT"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

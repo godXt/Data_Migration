@@ -1,0 +1,78 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "COMPLETE_DATE",
+                            "ORG_CODE",
+                            "BUSI_CODE",
+                            "YZT_CHANNEL",
+                            "BUSI_NUM_TOTAL",
+                            "COMPLETE_NUM",
+                            "INVALID_NUM",
+                            "ACCEPT_TIME_TOTAL",
+                            "ACCEPT_NUM_TOTAL",
+                            "REVIEW_TIME_TOTAL",
+                            "REVIEW_NUM_TOTAL"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_ORG_BUSI_TOTAL_COUNT"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "COMPLETE_DATE",
+                            "ORG_CODE",
+                            "BUSI_CODE",
+                            "YZT_CHANNEL",
+                            "BUSI_NUM_TOTAL",
+                            "COMPLETE_NUM",
+                            "INVALID_NUM",
+                            "ACCEPT_TIME_TOTAL",
+                            "ACCEPT_NUM_TOTAL",
+                            "REVIEW_TIME_TOTAL",
+                            "REVIEW_NUM_TOTAL"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_ORG_BUSI_TOTAL_COUNT"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_ORG_BUSI_TOTAL_COUNT"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

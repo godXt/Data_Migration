@@ -1,0 +1,12 @@
+2023-06-28 14:25:52.475 [main] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+java.lang.OutOfMemoryError: (class: com/alibaba/fastjson/parser/ParserConfig, method: <init> signature: (Lcom/alibaba/fastjson/parser/deserializer/ASMDeserializerFactory;Ljava/lang/ClassLoader;)V) 
+	at com.alibaba.fastjson.JSON.parse(JSON.java:99)
+	at com.alibaba.datax.common.util.Configuration.<init>(Configuration.java:1073)
+	at com.alibaba.datax.common.util.Configuration.from(Configuration.java:79)
+	at com.alibaba.datax.core.util.ConfigParser.parseJobConfig(ConfigParser.java:75)
+	at com.alibaba.datax.core.util.ConfigParser.parse(ConfigParser.java:26)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:138)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

@@ -1,0 +1,80 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CON_ID",
+                            "ORG_CODE",
+                            "DEVICE_ID",
+                            "USER_NAME",
+                            "CRMID",
+                            "MOBILE_TEL",
+                            "BUSI_CODE",
+                            "SMS_ID",
+                            "SMS_TARGET",
+                            "SEND_NODE",
+                            "CONT_ID",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_VTM_OP_SMS_CONF"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CON_ID",
+                            "ORG_CODE",
+                            "DEVICE_ID",
+                            "USER_NAME",
+                            "CRMID",
+                            "MOBILE_TEL",
+                            "BUSI_CODE",
+                            "SMS_ID",
+                            "SMS_TARGET",
+                            "SEND_NODE",
+                            "CONT_ID",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_VTM_OP_SMS_CONF"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_VTM_OP_SMS_CONF"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

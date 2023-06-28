@@ -1,0 +1,78 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "BUSI_CODE",
+                            "ORG_CODE",
+                            "IS_AUDIT",
+                            "REF_BUSI_CODE",
+                            "VTM_REF_BUSI_CODE",
+                            "IS_PROPER_MATCH",
+                            "IS_ACCESS_MATCH",
+                            "CONDITION_DESCRIPTION",
+                            "CONDITION_VALUE",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_BUSI_APPT_CFG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "BUSI_CODE",
+                            "ORG_CODE",
+                            "IS_AUDIT",
+                            "REF_BUSI_CODE",
+                            "VTM_REF_BUSI_CODE",
+                            "IS_PROPER_MATCH",
+                            "IS_ACCESS_MATCH",
+                            "CONDITION_DESCRIPTION",
+                            "CONDITION_VALUE",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_BUSI_APPT_CFG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_BUSI_APPT_CFG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

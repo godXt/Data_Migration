@@ -1,0 +1,64 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "PRODUCT_NAME",
+                            "OEM_CODE",
+                            "AUTH_CODE",
+                            "EXP_DATE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_OEM_PRODUCT"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "PRODUCT_NAME",
+                            "OEM_CODE",
+                            "AUTH_CODE",
+                            "EXP_DATE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_OEM_PRODUCT"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_OEM_PRODUCT"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

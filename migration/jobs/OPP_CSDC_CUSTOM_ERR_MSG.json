@@ -1,0 +1,70 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CSDC_RTN_ERR_CODE",
+                            "CSDC_RETURN_MSG",
+                            "CUSTOM_ERR_MSG",
+                            "REPLACE1",
+                            "REPLACE2",
+                            "REPLACE3",
+                            "IN_USE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_CSDC_CUSTOM_ERR_MSG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CSDC_RTN_ERR_CODE",
+                            "CSDC_RETURN_MSG",
+                            "CUSTOM_ERR_MSG",
+                            "REPLACE1",
+                            "REPLACE2",
+                            "REPLACE3",
+                            "IN_USE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_CSDC_CUSTOM_ERR_MSG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_CSDC_CUSTOM_ERR_MSG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

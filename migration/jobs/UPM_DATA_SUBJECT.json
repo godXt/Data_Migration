@@ -1,0 +1,72 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBJECT_CODE",
+                            "SUBJECT_NAME",
+                            "SUBJECT_TYPE",
+                            "REF_META_TYPE",
+                            "REF_META_CODE",
+                            "DATA_TYPE",
+                            "REMARK",
+                            "OPER_TIME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_DATA_SUBJECT"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBJECT_CODE",
+                            "SUBJECT_NAME",
+                            "SUBJECT_TYPE",
+                            "REF_META_TYPE",
+                            "REF_META_CODE",
+                            "DATA_TYPE",
+                            "REMARK",
+                            "OPER_TIME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_DATA_SUBJECT"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_DATA_SUBJECT"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

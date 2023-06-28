@@ -1,0 +1,78 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TOPIC",
+                            "TOPIC_NAME",
+                            "TOPIC_GRP",
+                            "PUBLISHER",
+                            "PARTITIONS",
+                            "REPLICAS",
+                            "RETENTION_MS",
+                            "RETENTION_BYTES",
+                            "MSG_KEY",
+                            "REMARK",
+                            "UPD_TIME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "TOPIC_INFO"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TOPIC",
+                            "TOPIC_NAME",
+                            "TOPIC_GRP",
+                            "PUBLISHER",
+                            "PARTITIONS",
+                            "REPLICAS",
+                            "RETENTION_MS",
+                            "RETENTION_BYTES",
+                            "MSG_KEY",
+                            "REMARK",
+                            "UPD_TIME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE TOPIC_INFO"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "TOPIC_INFO"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

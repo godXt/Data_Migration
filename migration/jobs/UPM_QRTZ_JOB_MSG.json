@@ -1,0 +1,66 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "JOB_NAME",
+                            "JOB_GROUP",
+                            "NOTIFY_TYPE",
+                            "TPL_ID",
+                            "POST_ID"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_QRTZ_JOB_MSG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "JOB_NAME",
+                            "JOB_GROUP",
+                            "NOTIFY_TYPE",
+                            "TPL_ID",
+                            "POST_ID"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_QRTZ_JOB_MSG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_QRTZ_JOB_MSG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

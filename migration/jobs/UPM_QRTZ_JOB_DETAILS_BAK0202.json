@@ -1,0 +1,76 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SCHED_NAME",
+                            "JOB_NAME",
+                            "JOB_GROUP",
+                            "DESCRIPTION",
+                            "JOB_CLASS_NAME",
+                            "IS_DURABLE",
+                            "IS_NONCONCURRENT",
+                            "IS_UPDATE_DATA",
+                            "REQUESTS_RECOVERY",
+                            "JOB_DATA"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_QRTZ_JOB_DETAILS_BAK0202"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SCHED_NAME",
+                            "JOB_NAME",
+                            "JOB_GROUP",
+                            "DESCRIPTION",
+                            "JOB_CLASS_NAME",
+                            "IS_DURABLE",
+                            "IS_NONCONCURRENT",
+                            "IS_UPDATE_DATA",
+                            "REQUESTS_RECOVERY",
+                            "JOB_DATA"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_QRTZ_JOB_DETAILS_BAK0202"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_QRTZ_JOB_DETAILS_BAK0202"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,70 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "DB_SOURCE",
+                            "BGN_DATE",
+                            "END_DATE",
+                            "LINK_SERVER",
+                            "ARCH_MODE",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_ARCH_DB_ZONE"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "DB_SOURCE",
+                            "BGN_DATE",
+                            "END_DATE",
+                            "LINK_SERVER",
+                            "ARCH_MODE",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_ARCH_DB_ZONE"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_ARCH_DB_ZONE"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

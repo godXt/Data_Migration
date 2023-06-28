@@ -1,0 +1,203 @@
+2023-06-21 16:29:32.193 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 16:29:32.203 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 16:29:32.234 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 16:29:32.240 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 16:29:32.275 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"BUSI_CODE",
+						"PARA_CODE",
+						"PARA_NAME",
+						"PARA_TYPE",
+						"PARA_CLS",
+						"PARA_DICT",
+						"REMARK"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"OPP_BUSI_PARA"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"BUSI_CODE",
+						"PARA_CODE",
+						"PARA_NAME",
+						"PARA_TYPE",
+						"PARA_CLS",
+						"PARA_DICT",
+						"REMARK"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"OPP_BUSI_PARA"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE OPP_BUSI_PARA"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 16:29:32.310 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 16:29:32.315 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 16:29:32.315 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 16:29:32.320 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 16:29:38.451 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 16:29:38.495 [job-0] INFO  OriginalConfPretreatmentUtil - table:[OPP_BUSI_PARA] has columns:[BUSI_CODE,PARA_CODE,PARA_NAME,PARA_TYPE,PARA_CLS,PARA_DICT,REMARK].
+2023-06-21 16:29:38.635 [job-0] INFO  OriginalConfPretreatmentUtil - table:[OPP_BUSI_PARA] all columns:[
+BUSI_CODE,PARA_CODE,PARA_NAME,PARA_TYPE,PARA_CLS,PARA_DICT,REMARK
+].
+2023-06-21 16:29:38.653 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (BUSI_CODE,PARA_CODE,PARA_NAME,PARA_TYPE,PARA_CLS,PARA_DICT,REMARK) VALUES(?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 16:29:38.654 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 16:29:38.654 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 16:29:38.654 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 16:29:38.680 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE OPP_BUSI_PARA]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 16:29:38.685 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 16:29:38.685 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-21 16:29:38.689 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 16:29:38.689 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 16:29:38.709 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 16:29:38.712 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 16:29:38.714 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 16:29:38.730 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 16:29:38.734 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 16:29:38.734 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 16:29:38.758 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 16:29:38.763 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select BUSI_CODE,PARA_CODE,PARA_NAME,PARA_TYPE,PARA_CLS,PARA_DICT,REMARK from OPP_BUSI_PARA 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 16:29:39.458 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, ACCESS_CON_IDS)。
+2023-06-21 16:29:39.523 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象2023-06-21 16:29:48.746 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4903 records, 141680 bytes | Speed 13.84KB/s, 490 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.208s |  All Task WaitReaderTime 0.095s | Percentage 100.00%
+2023-06-21 16:29:48.746 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-06-21 16:29:48.746 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-06-21 16:29:48.747 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do post work.
+2023-06-21 16:29:48.747 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-06-21 16:29:48.747 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-06-21 16:29:48.748 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+
+2023-06-21 16:29:48.748 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-06-21 16:29:48.748 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4903 records, 141680 bytes | Speed 13.84KB/s, 490 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.208s |  All Task WaitReaderTime 0.095s | Percentage 100.00%
+2023-06-21 16:29:48.749 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-06-21 16:29:32
+任务结束时刻                    : 2023-06-21 16:29:48
+任务总计耗时                    :                 16s
+任务平均流量                    :           13.84KB/s
+记录写入速度                    :            490rec/s
+读出记录总数                    :                4903
+读写失败总数                    :                   0
+
+00000, ACCESS_CON_IDS)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":14,"index":1,"rawData":"ACCESS_CON_IDS","type":"STRING"},{"byteSize":14,"index":2,"rawData":"业务准入不通过的检查条件ID","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":16,"index":6,"rawData":"保存业务准入检查不通过的条件ID","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.541 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, ADDRESS)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":7,"index":1,"rawData":"ADDRESS","type":"STRING"},{"byteSize":4,"index":2,"rawData":"家庭地址","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.543 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, AGE)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":3,"index":1,"rawData":"AGE","type":"STRING"},{"byteSize":2,"index":2,"rawData":"年龄","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.544 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, AGT_ID_CODE)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":11,"index":1,"rawData":"AGT_ID_CODE","type":"STRING"},{"byteSize":7,"index":2,"rawData":"代理人证件号码","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.545 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, AGT_ID_TYPE)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":11,"index":1,"rawData":"AGT_ID_TYPE","type":"STRING"},{"byteSize":7,"index":2,"rawData":"代理人证件类型","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":7,"index":5,"rawData":"ID_TYPE","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.546 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, AGT_USER_NAME)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":13,"index":1,"rawData":"AGT_USER_NAME","type":"STRING"},{"byteSize":5,"index":2,"rawData":"代理人姓名","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.546 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, AML_LVL)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":7,"index":1,"rawData":"AML_LVL","type":"STRING"},{"byteSize":5,"index":2,"rawData":"反洗钱级别","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":7,"index":5,"rawData":"AML_LVL","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.547 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, ASSET)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":5,"index":1,"rawData":"ASSET","type":"STRING"},{"byteSize":6,"index":2,"rawData":"固定资产总额","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:39.548 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (00000, ASSIGN_PERSON_ID_TYPE)。","record":[{"byteSize":5,"index":0,"rawData":"00000","type":"STRING"},{"byteSize":21,"index":1,"rawData":"ASSIGN_PERSON_ID_TYPE","type":"STRING"},{"byteSize":9,"index":2,"rawData":"开户经办人证件类型","type":"STRING"},{"byteSize":1,"index":3,"rawData":"1","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":7,"index":5,"rawData":"ID_TYPE","type":"STRING"},{"byteSize":0,"index":6,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 16:29:40.497 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (P0004, SIGN_TYPE)。
+2023-06-21 16:29:41.344 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select BUSI_CODE,PARA_CODE,PARA_NAME,PARA_TYPE,PARA_CLS,PARA_DICT,REMARK from OPP_BUSI_PARA 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 16:29:41.624 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_OPP_BUSI_PARA”。不能在对象“dbo.OPP_BUSI_PARA”中插入重复键。重复键值为 (YGT_W0110675, ETFMODE)。
+2023-06-21 16:29:42.120 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[3378]ms
+2023-06-21 16:29:42.120 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-21 16:29:48.746 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4903 records, 141680 bytes | Speed 13.84KB/s, 490 records/s | Error 4903 records, 141680 bytes |  All Task WaitWriterTime 2.357s |  All Task WaitReaderTime 0.177s | Percentage 100.00%
+2023-06-21 16:29:48.747 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-21 16:29:48.747 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[4903]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 16:29:48.747 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4903 records, 141680 bytes | Speed 138.36KB/s, 4903 records/s | Error 4903 records, 141680 bytes |  All Task WaitWriterTime 2.357s |  All Task WaitReaderTime 0.177s | Percentage 100.00%
+2023-06-21 16:29:48.748 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[4903]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

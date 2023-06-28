@@ -1,0 +1,76 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "HI_COMMENT_ID",
+                            "COMM_TYPE",
+                            "COMM_TIME",
+                            "USER_ID",
+                            "TASK_ID",
+                            "PROC_INST_ID",
+                            "ACTION",
+                            "COMM_MESSAGE",
+                            "FULL_MSG",
+                            "CREATE_TIME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UWK_HI_COMMENT"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "HI_COMMENT_ID",
+                            "COMM_TYPE",
+                            "COMM_TIME",
+                            "USER_ID",
+                            "TASK_ID",
+                            "PROC_INST_ID",
+                            "ACTION",
+                            "COMM_MESSAGE",
+                            "FULL_MSG",
+                            "CREATE_TIME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UWK_HI_COMMENT"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UWK_HI_COMMENT"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

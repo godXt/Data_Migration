@@ -1,0 +1,94 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "MENU_ID",
+                            "MENU_NAME",
+                            "PAR_MENU",
+                            "MENU_LVL",
+                            "MENU_PUR",
+                            "MENU_LINK",
+                            "MENU_STA",
+                            "MENU_ICO",
+                            "MENU_PLAT",
+                            "MENU_BPM_FORM",
+                            "MENU_DLL",
+                            "MENU_DLL_ENTRY",
+                            "BUSI_CODE",
+                            "NODE_MODE",
+                            "IS_NAV",
+                            "INTER_AGENCY_FLAG",
+                            "EFT_FLAG",
+                            "MENU_SPELL",
+                            "RELA_SYS"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_MENU"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "MENU_ID",
+                            "MENU_NAME",
+                            "PAR_MENU",
+                            "MENU_LVL",
+                            "MENU_PUR",
+                            "MENU_LINK",
+                            "MENU_STA",
+                            "MENU_ICO",
+                            "MENU_PLAT",
+                            "MENU_BPM_FORM",
+                            "MENU_DLL",
+                            "MENU_DLL_ENTRY",
+                            "BUSI_CODE",
+                            "NODE_MODE",
+                            "IS_NAV",
+                            "INTER_AGENCY_FLAG",
+                            "EFT_FLAG",
+                            "MENU_SPELL",
+                            "RELA_SYS"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_MENU"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_MENU"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

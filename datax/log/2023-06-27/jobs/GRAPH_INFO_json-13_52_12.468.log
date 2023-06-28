@@ -1,0 +1,185 @@
+2023-06-27 13:52:12.643 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-27 13:52:12.645 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-27 13:52:12.654 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-27 13:52:12.659 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-27 13:52:12.672 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"GRAPH_ID",
+						"GRAPH_NAME",
+						"GRAPH_TYPE",
+						"UPDATE_TIME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"GRAPH_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"GRAPH_ID",
+						"GRAPH_NAME",
+						"GRAPH_TYPE",
+						"UPDATE_TIME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"GRAPH_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE GRAPH_INFO"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-27 13:52:12.685 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-27 13:52:12.686 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-27 13:52:12.686 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-27 13:52:12.687 [main] INFO  JobContainer - Set jobId = 0
+2023-06-27 13:52:18.449 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-27 13:52:18.487 [job-0] INFO  OriginalConfPretreatmentUtil - table:[GRAPH_INFO] has columns:[GRAPH_ID,GRAPH_NAME,GRAPH_TYPE,UPDATE_TIME].
+2023-06-27 13:52:18.571 [job-0] INFO  OriginalConfPretreatmentUtil - table:[GRAPH_INFO] all columns:[
+GRAPH_ID,GRAPH_NAME,GRAPH_TYPE,UPDATE_TIME
+].
+2023-06-27 13:52:18.586 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (GRAPH_ID,GRAPH_NAME,GRAPH_TYPE,UPDATE_TIME) VALUES(?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-27 13:52:18.586 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-27 13:52:18.587 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-27 13:52:18.587 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-27 13:52:18.602 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE GRAPH_INFO]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-27 13:52:18.603 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-27 13:52:18.604 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-27 13:52:18.606 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-27 13:52:18.606 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-27 13:52:18.621 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-27 13:52:18.624 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-27 13:52:18.626 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-27 13:52:18.632 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-27 13:52:18.636 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-27 13:52:18.637 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-27 13:52:18.649 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-27 13:52:18.655 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select GRAPH_ID,GRAPH_NAME,GRAPH_TYPE,UPDATE_TIME from GRAPH_INFO 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-27 13:52:18.725 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select GRAPH_ID,GRAPH_NAME,GRAPH_TYPE,UPDATE_TIME from GRAPH_INFO 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-27 13:52:18.788 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (1d013e0f3cc043398cc2fd57c4c0d1ea)。
+2023-06-27 13:52:18.794 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (1d013e0f3cc043398cc2fd57c4c0d1ea)。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:297) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-06-27 13:52:18.800 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (1d013e0f3cc043398cc2fd57c4c0d1ea)。","record":[{"byteSize":32,"index":0,"rawData":"1d013e0f3cc043398cc2fd57c4c0d1ea","type":"STRING"},{"byteSize":8,"index":1,"rawData":"三方存管结息通知","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528740,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.802 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (bf7be03859ec418489c76046f3350e0c)。","record":[{"byteSize":32,"index":0,"rawData":"bf7be03859ec418489c76046f3350e0c","type":"STRING"},{"byteSize":6,"index":1,"rawData":"基金账户冻结","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.804 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (0bc8e7492217409d95be2e990757014d)。","record":[{"byteSize":32,"index":0,"rawData":"0bc8e7492217409d95be2e990757014d","type":"STRING"},{"byteSize":6,"index":1,"rawData":"基金份额冻结","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.806 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (67d3590cfaff43d280806c7a3ac47ec4)。","record":[{"byteSize":32,"index":0,"rawData":"67d3590cfaff43d280806c7a3ac47ec4","type":"STRING"},{"byteSize":6,"index":1,"rawData":"资金解冻取消","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.808 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (b430945635cb4d25a31923207a77f34a)。","record":[{"byteSize":32,"index":0,"rawData":"b430945635cb4d25a31923207a77f34a","type":"STRING"},{"byteSize":6,"index":1,"rawData":"资金冻结取消","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.810 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (ff95f32a357e429fbdc2de4fb42d664d)。","record":[{"byteSize":32,"index":0,"rawData":"ff95f32a357e429fbdc2de4fb42d664d","type":"STRING"},{"byteSize":6,"index":1,"rawData":"基金账户解冻","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.811 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (3b0db34ac42e4e658506702c1eb05e31)。","record":[{"byteSize":32,"index":0,"rawData":"3b0db34ac42e4e658506702c1eb05e31","type":"STRING"},{"byteSize":6,"index":1,"rawData":"禁取资金设置","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.812 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (f6ebb824eefe4a1db0b15270259efbbf)。","record":[{"byteSize":32,"index":0,"rawData":"f6ebb824eefe4a1db0b15270259efbbf","type":"STRING"},{"byteSize":6,"index":1,"rawData":"基金份额解冻","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.815 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_GRAPH_INFO”。不能在对象“dbo.GRAPH_INFO”中插入重复键。重复键值为 (53156887aa7e4bea9cab6977e50bc860)。","record":[{"byteSize":32,"index":0,"rawData":"53156887aa7e4bea9cab6977e50bc860","type":"STRING"},{"byteSize":6,"index":1,"rawData":"禁取资产设置","type":"STRING"},{"byteSize":9,"index":2,"rawData":"BUSI_ATOM","type":"STRING"},{"byteSize":8,"index":3,"rawData":1603765528743,"type":"DATE"}],"type":"writer"}
+2023-06-27 13:52:18.882 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[234]ms
+2023-06-27 13:52:18.883 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-27 13:52:28.652 [job-0] INFO  StandAloneJobContainerCommunicator - Total 22 records, 1209 bytes | Speed 120B/s, 2 records/s | Error 22 records, 1209 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 100.00%
+2023-06-27 13:52:28.652 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-27 13:52:28.653 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[22]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-27 13:52:28.653 [job-0] INFO  StandAloneJobContainerCommunicator - Total 22 records, 1209 bytes | Speed 1.18KB/s, 22 records/s | Error 22 records, 1209 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 100.00%
+2023-06-27 13:52:28.653 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[22]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

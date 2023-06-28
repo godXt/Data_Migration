@@ -1,0 +1,66 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SER_NO",
+                            "MENU_ID",
+                            "ROLE_ID",
+                            "OP_CODE",
+                            "PLAT_CODE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UUM_COMMON_BUS"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SER_NO",
+                            "MENU_ID",
+                            "ROLE_ID",
+                            "OP_CODE",
+                            "PLAT_CODE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UUM_COMMON_BUS"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UUM_COMMON_BUS"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

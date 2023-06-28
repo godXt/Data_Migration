@@ -1,0 +1,80 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "USER_TYPE",
+                            "ID_TYPE",
+                            "INOUTSIDE_IDENTITY",
+                            "SUBJECT_IDENTITY",
+                            "OCCU_TYPE",
+                            "LEGAL_REP_TYPE",
+                            "CITIZENSHIP",
+                            "SZORG_TYPE",
+                            "ACCT_TYPE",
+                            "OPEN_TYPE",
+                            "IS_USED",
+                            "PROMPT_TIP"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_BUSI_ACCT_OPEN_LOGIC"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "USER_TYPE",
+                            "ID_TYPE",
+                            "INOUTSIDE_IDENTITY",
+                            "SUBJECT_IDENTITY",
+                            "OCCU_TYPE",
+                            "LEGAL_REP_TYPE",
+                            "CITIZENSHIP",
+                            "SZORG_TYPE",
+                            "ACCT_TYPE",
+                            "OPEN_TYPE",
+                            "IS_USED",
+                            "PROMPT_TIP"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_BUSI_ACCT_OPEN_LOGIC"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_BUSI_ACCT_OPEN_LOGIC"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

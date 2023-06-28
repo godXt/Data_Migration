@@ -1,0 +1,80 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TMPL_ID",
+                            "TMPL_TYPE",
+                            "TMPL_NAME",
+                            "TMPL_DESC",
+                            "TMPL_FILE_PATH",
+                            "TMPL_USE_FLAG",
+                            "VOICE_TYPE",
+                            "TEXT_CONTENT",
+                            "VOICE_IMAGE_PATH",
+                            "IS_VOICE_RECOGNITION",
+                            "REPLY_COMPARE_VALUE",
+                            "SERIOUS_ERROR_VALUE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_REC_TMPL_INFO"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TMPL_ID",
+                            "TMPL_TYPE",
+                            "TMPL_NAME",
+                            "TMPL_DESC",
+                            "TMPL_FILE_PATH",
+                            "TMPL_USE_FLAG",
+                            "VOICE_TYPE",
+                            "TEXT_CONTENT",
+                            "VOICE_IMAGE_PATH",
+                            "IS_VOICE_RECOGNITION",
+                            "REPLY_COMPARE_VALUE",
+                            "SERIOUS_ERROR_VALUE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_REC_TMPL_INFO"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_REC_TMPL_INFO"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

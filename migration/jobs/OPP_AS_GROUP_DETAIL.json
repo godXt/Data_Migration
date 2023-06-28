@@ -1,0 +1,66 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "AS_GROUP_ID",
+                            "AS_BUSI",
+                            "FILE_TYPE",
+                            "EXPORT_PATH",
+                            "AS_STATE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_AS_GROUP_DETAIL"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "AS_GROUP_ID",
+                            "AS_BUSI",
+                            "FILE_TYPE",
+                            "EXPORT_PATH",
+                            "AS_STATE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_AS_GROUP_DETAIL"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_AS_GROUP_DETAIL"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

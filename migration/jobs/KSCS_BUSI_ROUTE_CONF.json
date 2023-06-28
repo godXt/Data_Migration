@@ -1,0 +1,78 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "USER_TYPE",
+                            "NODE_NAME",
+                            "NODE_ID",
+                            "NODE_FIELD",
+                            "MODULE_ROUTE",
+                            "MODULE_NAME",
+                            "MODULE_IDS",
+                            "COMP_BUSI_MODULE",
+                            "OPP_BUSI_GUIDE",
+                            "NODE_ORD"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "KSCS_BUSI_ROUTE_CONF"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "USER_TYPE",
+                            "NODE_NAME",
+                            "NODE_ID",
+                            "NODE_FIELD",
+                            "MODULE_ROUTE",
+                            "MODULE_NAME",
+                            "MODULE_IDS",
+                            "COMP_BUSI_MODULE",
+                            "OPP_BUSI_GUIDE",
+                            "NODE_ORD"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE KSCS_BUSI_ROUTE_CONF"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "KSCS_BUSI_ROUTE_CONF"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

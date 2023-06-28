@@ -1,0 +1,76 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "B_SNO",
+                            "NODE_KEY",
+                            "NODE_NAME",
+                            "HANDLER",
+                            "OP_ORG",
+                            "ADJUST_TYPE",
+                            "ADJUST_SCORE",
+                            "ADJUST_REMARK",
+                            "UPDATE_TIME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "STAT_EMP_SCORE_ADJUST_DETAIL"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "B_SNO",
+                            "NODE_KEY",
+                            "NODE_NAME",
+                            "HANDLER",
+                            "OP_ORG",
+                            "ADJUST_TYPE",
+                            "ADJUST_SCORE",
+                            "ADJUST_REMARK",
+                            "UPDATE_TIME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE STAT_EMP_SCORE_ADJUST_DETAIL"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "STAT_EMP_SCORE_ADJUST_DETAIL"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

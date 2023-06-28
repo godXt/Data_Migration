@@ -1,0 +1,62 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TUTOR_CODE",
+                            "TRAINEE_CODE",
+                            "TRAINEE_STATUS"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UEM_TUTOR_TRAINEE_MANAGE"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "TUTOR_CODE",
+                            "TRAINEE_CODE",
+                            "TRAINEE_STATUS"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UEM_TUTOR_TRAINEE_MANAGE"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UEM_TUTOR_TRAINEE_MANAGE"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

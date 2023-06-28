@@ -1,0 +1,209 @@
+2023-06-21 10:58:06.947 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 10:58:06.949 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 10:58:06.957 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 10:58:06.960 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 10:58:06.973 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"HI_DETAIL_ID",
+						"DETAIL_TYPE",
+						"PROC_INST_ID",
+						"EXECUTION_ID",
+						"TASK_ID",
+						"ACT_INST_ID",
+						"DETAIL_NAME",
+						"VAR_TYPE",
+						"REV",
+						"DETAIL_TIME",
+						"BYTEARRAY_ID",
+						"DOUBLETYPE",
+						"LONGTYPE",
+						"TEXTTYPE",
+						"TEXT2TYPE",
+						"CREATE_TIME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"UWK_HI_DETAIL"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"HI_DETAIL_ID",
+						"DETAIL_TYPE",
+						"PROC_INST_ID",
+						"EXECUTION_ID",
+						"TASK_ID",
+						"ACT_INST_ID",
+						"DETAIL_NAME",
+						"VAR_TYPE",
+						"REV",
+						"DETAIL_TIME",
+						"BYTEARRAY_ID",
+						"DOUBLETYPE",
+						"LONGTYPE",
+						"TEXTTYPE",
+						"TEXT2TYPE",
+						"CREATE_TIME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UWK_HI_DETAIL"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UWK_HI_DETAIL"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 10:58:06.985 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 10:58:06.986 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 10:58:06.986 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 10:58:06.987 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 10:58:12.617 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 10:58:12.661 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UWK_HI_DETAIL] has columns:[HI_DETAIL_ID,DETAIL_TYPE,PROC_INST_ID,EXECUTION_ID,TASK_ID,ACT_INST_ID,DETAIL_NAME,VAR_TYPE,REV,DETAIL_TIME,BYTEARRAY_ID,DOUBLETYPE,LONGTYPE,TEXTTYPE,TEXT2TYPE,CREATE_TIME].
+2023-06-21 10:58:12.775 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UWK_HI_DETAIL] all columns:[
+HI_DETAIL_ID,DETAIL_TYPE,PROC_INST_ID,EXECUTION_ID,TASK_ID,ACT_INST_ID,DETAIL_NAME,VAR_TYPE,REV,DETAIL_TIME,BYTEARRAY_ID,DOUBLETYPE,LONGTYPE,TEXTTYPE,TEXT2TYPE,CREATE_TIME
+].
+2023-06-21 10:58:12.791 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (HI_DETAIL_ID,DETAIL_TYPE,PROC_INST_ID,EXECUTION_ID,TASK_ID,ACT_INST_ID,DETAIL_NAME,VAR_TYPE,REV,DETAIL_TIME,BYTEARRAY_ID,DOUBLETYPE,LONGTYPE,TEXTTYPE,TEXT2TYPE,CREATE_TIME) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 10:58:12.791 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 10:58:12.792 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 10:58:12.792 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 10:58:12.808 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UWK_HI_DETAIL]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 10:58:12.844 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 10:58:12.844 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-21 10:58:12.846 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 10:58:12.847 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 10:58:12.860 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 10:58:12.862 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 10:58:12.865 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 10:58:12.869 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 10:58:12.871 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 10:58:12.872 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 10:58:12.880 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 10:58:12.883 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select HI_DETAIL_ID,DETAIL_TYPE,PROC_INST_ID,EXECUTION_ID,TASK_ID,ACT_INST_ID,DETAIL_NAME,VAR_TYPE,REV,DETAIL_TIME,BYTEARRAY_ID,DOUBLETYPE,LONGTYPE,TEXTTYPE,TEXT2TYPE,CREATE_TIME from UWK_HI_DETAIL 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:58:13.061 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select HI_DETAIL_ID,DETAIL_TYPE,PROC_INST_ID,EXECUTION_ID,TASK_ID,ACT_INST_ID,DETAIL_NAME,VAR_TYPE,REV,DETAIL_TIME,BYTEARRAY_ID,DOUBLETYPE,LONGTYPE,TEXTTYPE,TEXT2TYPE,CREATE_TIME from UWK_HI_DETAIL 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:58:13.410 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90428f21-ec24-4a58-aef5-f89a4cbe3a73)。
+2023-06-21 10:58:13.414 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90428f21-ec24-4a58-aef5-f89a4cbe3a73)。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:297) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-06-21 10:58:13.418 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90428f21-ec24-4a58-aef5-f89a4cbe3a73)。","record":[{"byteSize":36,"index":0,"rawData":"90428f21-ec24-4a58-aef5-f89a4cbe3a73","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"685fa72c-20aa-42d6-93f6-d3d3f21b1135","type":"STRING"},{"byteSize":36,"index":3,"rawData":"685fa72c-20aa-42d6-93f6-d3d3f21b1135","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"656ff0ca-ec9e-4869-ba89-95433212793d","type":"STRING"},{"byteSize":9,"index":6,"rawData":"BUSI_CODE","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"0","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1641371347337,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":5,"index":13,"rawData":"D0001","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1641371347337,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.420 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90a31138-2c2d-4bc8-b9f2-ee3fd34e6aee)。","record":[{"byteSize":36,"index":0,"rawData":"90a31138-2c2d-4bc8-b9f2-ee3fd34e6aee","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"48c3aa01-a95c-4356-ae2d-7e6dc0cdf2c2","type":"STRING"},{"byteSize":36,"index":3,"rawData":"48c3aa01-a95c-4356-ae2d-7e6dc0cdf2c2","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"eb7570a6-8712-4573-83c4-b32afe52aed1","type":"STRING"},{"byteSize":9,"index":6,"rawData":"BUSI_CODE","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"2","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1614589516313,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":5,"index":13,"rawData":"Z0004","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1614589516313,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.420 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90ad1710-faf7-46c8-ac7b-a1b592374c23)。","record":[{"byteSize":36,"index":0,"rawData":"90ad1710-faf7-46c8-ac7b-a1b592374c23","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"73cfc70c-94b3-4f8a-9c75-b06279909c2a","type":"STRING"},{"byteSize":36,"index":3,"rawData":"73cfc70c-94b3-4f8a-9c75-b06279909c2a","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"350d5c3e-5415-4fdf-b205-a65662c0e481","type":"STRING"},{"byteSize":8,"index":6,"rawData":"ORG_CODE","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"3","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1639452527630,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":4,"index":13,"rawData":"1001","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1639452527630,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.421 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90b8c4af-edd5-42b7-aecc-16ca5df3512d)。","record":[{"byteSize":36,"index":0,"rawData":"90b8c4af-edd5-42b7-aecc-16ca5df3512d","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"9caea2e4-d92f-4aab-aed2-5b2a317b9340","type":"STRING"},{"byteSize":36,"index":3,"rawData":"9caea2e4-d92f-4aab-aed2-5b2a317b9340","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"3fed69fc-8d12-4a2b-8db3-5e8efb959fb3","type":"STRING"},{"byteSize":9,"index":6,"rawData":"APPROVE_1","type":"STRING"},{"byteSize":7,"index":7,"rawData":"integer","type":"STRING"},{"byteSize":1,"index":8,"rawData":"3","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1652934365217,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":1,"index":12,"rawData":"2","type":"DOUBLE"},{"byteSize":1,"index":13,"rawData":"2","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1652934365217,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.423 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90b99e38-3a64-407e-8be3-195d07853333)。","record":[{"byteSize":36,"index":0,"rawData":"90b99e38-3a64-407e-8be3-195d07853333","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"ac7bf4a9-2a3e-442c-a728-452bde17e1e8","type":"STRING"},{"byteSize":36,"index":3,"rawData":"ac7bf4a9-2a3e-442c-a728-452bde17e1e8","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"953de6da-96cb-4bc8-9cdf-a8525e39f933","type":"STRING"},{"byteSize":5,"index":6,"rawData":"B_SNO","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"2","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1592285996730,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":16,"index":13,"rawData":"2020061600000004","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1592285996730,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.424 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90c6f811-f8b6-4ce9-bffd-b2e1c7a3ca5c)。","record":[{"byteSize":36,"index":0,"rawData":"90c6f811-f8b6-4ce9-bffd-b2e1c7a3ca5c","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"c1892eea-95d1-44e0-b92a-b05f5ddfc4dc","type":"STRING"},{"byteSize":36,"index":3,"rawData":"c1892eea-95d1-44e0-b92a-b05f5ddfc4dc","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"b3a549b5-49c7-4d5b-a3f4-902305ecd3b5","type":"STRING"},{"byteSize":9,"index":6,"rawData":"APPROVE_1","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":2,"index":8,"rawData":"10","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1591783064100,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":1,"index":13,"rawData":"1","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1591783064100,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.425 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90d0fbcb-b645-4a04-9226-9d4da6674be7)。","record":[{"byteSize":36,"index":0,"rawData":"90d0fbcb-b645-4a04-9226-9d4da6674be7","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"95ccd4e7-1879-4d39-891d-f69f68381c44","type":"STRING"},{"byteSize":36,"index":3,"rawData":"95ccd4e7-1879-4d39-891d-f69f68381c44","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"5c756c0f-96de-44a1-affe-cc781a4f56bd","type":"STRING"},{"byteSize":9,"index":6,"rawData":"APPROVE_1","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"3","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1639452540433,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":1,"index":13,"rawData":"1","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1639452540433,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.425 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90de9fee-b450-471a-8662-d0b1cb4e0485)。","record":[{"byteSize":36,"index":0,"rawData":"90de9fee-b450-471a-8662-d0b1cb4e0485","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"f02d3285-eb4a-4ac5-b9a9-7f1867492734","type":"STRING"},{"byteSize":36,"index":3,"rawData":"f02d3285-eb4a-4ac5-b9a9-7f1867492734","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"5506b3f8-10c4-43b6-b589-8b0a0759da30","type":"STRING"},{"byteSize":8,"index":6,"rawData":"CUST_ORG","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":1,"index":8,"rawData":"0","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1614679068127,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":4,"index":13,"rawData":"1001","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1614679068127,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:13.425 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_UWK_HI_DETAIL”。不能在对象“dbo.UWK_HI_DETAIL”中插入重复键。重复键值为 (90dec2a5-af98-46a7-b89f-dc044b8f2b45)。","record":[{"byteSize":36,"index":0,"rawData":"90dec2a5-af98-46a7-b89f-dc044b8f2b45","type":"STRING"},{"byteSize":14,"index":1,"rawData":"VariableUpdate","type":"STRING"},{"byteSize":36,"index":2,"rawData":"665780d8-d83f-4c9a-a05b-2f49bfd141a4","type":"STRING"},{"byteSize":36,"index":3,"rawData":"665780d8-d83f-4c9a-a05b-2f49bfd141a4","type":"STRING"},{"byteSize":0,"index":4,"type":"STRING"},{"byteSize":36,"index":5,"rawData":"ca745e60-ee5e-4990-b4cf-58e52cc76d5b","type":"STRING"},{"byteSize":9,"index":6,"rawData":"APPROVE_1","type":"STRING"},{"byteSize":6,"index":7,"rawData":"string","type":"STRING"},{"byteSize":2,"index":8,"rawData":"10","type":"DOUBLE"},{"byteSize":8,"index":9,"rawData":1590665362177,"type":"DATE"},{"byteSize":0,"index":10,"type":"STRING"},{"byteSize":0,"index":11,"type":"DOUBLE"},{"byteSize":0,"index":12,"type":"DOUBLE"},{"byteSize":1,"index":13,"rawData":"1","type":"STRING"},{"byteSize":0,"index":14,"type":"STRING"},{"byteSize":8,"index":15,"rawData":1590665362177,"type":"DATE"}],"type":"writer"}
+2023-06-21 10:58:14.283 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[1404]ms
+2023-06-21 10:58:14.283 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-21 10:58:22.879 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3645 records, 710842 bytes | Speed 69.42KB/s, 364 records/s | Error 1597 records, 311288 bytes |  All Task WaitWriterTime 0.091s |  All Task WaitReaderTime 0.059s | Percentage 100.00%
+2023-06-21 10:58:22.880 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-21 10:58:22.880 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[1597]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 10:58:22.881 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3645 records, 710842 bytes | Speed 694.18KB/s, 3645 records/s | Error 1597 records, 311288 bytes |  All Task WaitWriterTime 0.091s |  All Task WaitReaderTime 0.059s | Percentage 100.00%
+2023-06-21 10:58:22.881 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[1597]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

@@ -1,0 +1,72 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "OEM_FLAG",
+                            "PRODUCT_NAME",
+                            "BIZ_CONTENT",
+                            "MENU_NAME",
+                            "ADD_DATE",
+                            "LINK_NAME",
+                            "LINK_TYPE",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_OEM_LIST"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "OEM_FLAG",
+                            "PRODUCT_NAME",
+                            "BIZ_CONTENT",
+                            "MENU_NAME",
+                            "ADD_DATE",
+                            "LINK_NAME",
+                            "LINK_TYPE",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_OEM_LIST"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_OEM_LIST"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

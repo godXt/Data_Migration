@@ -1,0 +1,72 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "SRC_FUNC_CODE",
+                            "SRC_PARAM_CODE",
+                            "SRC_PARAM_NAME",
+                            "TGT_PARAM_CODE",
+                            "DATA_TRANS_CODE",
+                            "SRC_DFT_VAL",
+                            "TGT_DFT_VAL"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_FUNC_PARAM_TRANS"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "SRC_FUNC_CODE",
+                            "SRC_PARAM_CODE",
+                            "SRC_PARAM_NAME",
+                            "TGT_PARAM_CODE",
+                            "DATA_TRANS_CODE",
+                            "SRC_DFT_VAL",
+                            "TGT_DFT_VAL"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_FUNC_PARAM_TRANS"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_FUNC_PARAM_TRANS"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

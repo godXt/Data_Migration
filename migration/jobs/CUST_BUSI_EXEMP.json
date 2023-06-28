@@ -1,0 +1,64 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CUST_CODE",
+                            "BUSI_CODE",
+                            "EXEMP_TYPE",
+                            "EXP_DATE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "CUST_BUSI_EXEMP"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "CUST_CODE",
+                            "BUSI_CODE",
+                            "EXEMP_TYPE",
+                            "EXP_DATE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE CUST_BUSI_EXEMP"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "CUST_BUSI_EXEMP"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

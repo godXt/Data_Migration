@@ -1,0 +1,86 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ACS_ID",
+                            "CUST_AGMT_TYPE",
+                            "USER_TYPE",
+                            "STKBD",
+                            "TRDACCT_EXCLS",
+                            "PROF_INVESTOR_SOURCE",
+                            "AGMT_CHK_CLS",
+                            "AGMT_HANDLE_TYPE",
+                            "RESTRICT_TYPE",
+                            "CHK_COND",
+                            "CON_ID",
+                            "EXT_VAL",
+                            "HANDLE_TIP",
+                            "REMARK",
+                            "BIZ_TYPE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "KSCS_AGMT_ACS_CONF"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ACS_ID",
+                            "CUST_AGMT_TYPE",
+                            "USER_TYPE",
+                            "STKBD",
+                            "TRDACCT_EXCLS",
+                            "PROF_INVESTOR_SOURCE",
+                            "AGMT_CHK_CLS",
+                            "AGMT_HANDLE_TYPE",
+                            "RESTRICT_TYPE",
+                            "CHK_COND",
+                            "CON_ID",
+                            "EXT_VAL",
+                            "HANDLE_TIP",
+                            "REMARK",
+                            "BIZ_TYPE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE KSCS_AGMT_ACS_CONF"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "KSCS_AGMT_ACS_CONF"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

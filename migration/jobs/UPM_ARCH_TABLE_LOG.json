@@ -1,0 +1,94 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "LOG_NO",
+                            "ARCH_SNO",
+                            "GROUP_ID",
+                            "OP_TYPE",
+                            "DB_NAME",
+                            "TABLE_CODE",
+                            "ARCH_NUM",
+                            "BGN_TIME",
+                            "END_TIME",
+                            "ARCH_TYPE",
+                            "EXEC_RESULT",
+                            "ARCH_BGN_DATE",
+                            "ARCH_SQL",
+                            "FILE_PATH",
+                            "REMARK",
+                            "PRE_ARCH_NUM",
+                            "HIS_DELETE_NUM",
+                            "CUR_ARCH_NUM",
+                            "CUR_DELETE_NUM"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_ARCH_TABLE_LOG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "LOG_NO",
+                            "ARCH_SNO",
+                            "GROUP_ID",
+                            "OP_TYPE",
+                            "DB_NAME",
+                            "TABLE_CODE",
+                            "ARCH_NUM",
+                            "BGN_TIME",
+                            "END_TIME",
+                            "ARCH_TYPE",
+                            "EXEC_RESULT",
+                            "ARCH_BGN_DATE",
+                            "ARCH_SQL",
+                            "FILE_PATH",
+                            "REMARK",
+                            "PRE_ARCH_NUM",
+                            "HIS_DELETE_NUM",
+                            "CUR_ARCH_NUM",
+                            "CUR_DELETE_NUM"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_ARCH_TABLE_LOG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_ARCH_TABLE_LOG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

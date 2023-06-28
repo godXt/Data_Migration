@@ -1,0 +1,80 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUS_CODE",
+                            "BUS_NAME",
+                            "BUS_TYPE",
+                            "ENABLE_SOAP",
+                            "ACCESS_CONTROL",
+                            "DATA_OP_TYPE",
+                            "REC_FLAG",
+                            "GENERAL_REVIEW_KEY",
+                            "LBM_CODE",
+                            "VALID_PERM",
+                            "ENABLE_REVIEW",
+                            "NO_LOG_FIELDS"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_SYS_FUNC"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUS_CODE",
+                            "BUS_NAME",
+                            "BUS_TYPE",
+                            "ENABLE_SOAP",
+                            "ACCESS_CONTROL",
+                            "DATA_OP_TYPE",
+                            "REC_FLAG",
+                            "GENERAL_REVIEW_KEY",
+                            "LBM_CODE",
+                            "VALID_PERM",
+                            "ENABLE_REVIEW",
+                            "NO_LOG_FIELDS"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_SYS_FUNC"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_SYS_FUNC"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

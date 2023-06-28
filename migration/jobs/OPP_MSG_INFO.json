@@ -1,0 +1,88 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "MSG_SNO",
+                            "MSG_TITLE",
+                            "MSG_CONTENT",
+                            "MSG_FILE",
+                            "EDITOR",
+                            "TARGET_POST",
+                            "SCOPE_TYPE",
+                            "SCOPE_VAL",
+                            "PUBLISH_TIME",
+                            "MSG_STATUS",
+                            "REVIEWER",
+                            "REVIEW_TIME",
+                            "REMARK",
+                            "UPDATE_TIME",
+                            "MSG_TYPE",
+                            "MSG_DATA"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_MSG_INFO"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "MSG_SNO",
+                            "MSG_TITLE",
+                            "MSG_CONTENT",
+                            "MSG_FILE",
+                            "EDITOR",
+                            "TARGET_POST",
+                            "SCOPE_TYPE",
+                            "SCOPE_VAL",
+                            "PUBLISH_TIME",
+                            "MSG_STATUS",
+                            "REVIEWER",
+                            "REVIEW_TIME",
+                            "REMARK",
+                            "UPDATE_TIME",
+                            "MSG_TYPE",
+                            "MSG_DATA"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_MSG_INFO"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_MSG_INFO"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

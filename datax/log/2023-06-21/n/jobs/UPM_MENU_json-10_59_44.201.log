@@ -1,0 +1,180 @@
+2023-06-21 10:59:44.348 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 10:59:44.350 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 10:59:44.357 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 10:59:44.360 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 10:59:44.376 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"MENU_ID",
+						"MENU_NAME",
+						"PAR_MENU",
+						"MENU_LVL",
+						"MENU_PUR",
+						"MENU_LINK",
+						"MENU_STA",
+						"MENU_ICO",
+						"MENU_PLAT",
+						"MENU_BPM_FORM",
+						"MENU_DLL",
+						"MENU_DLL_ENTRY",
+						"BUSI_CODE",
+						"NODE_MODE",
+						"IS_NAV",
+						"INTER_AGENCY_FLAG",
+						"EFT_FLAG",
+						"MENU_SPELL",
+						"RELA_SYS"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"UPM_MENU"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"MENU_ID",
+						"MENU_NAME",
+						"PAR_MENU",
+						"MENU_LVL",
+						"MENU_PUR",
+						"MENU_LINK",
+						"MENU_STA",
+						"MENU_ICO",
+						"MENU_PLAT",
+						"MENU_BPM_FORM",
+						"MENU_DLL",
+						"MENU_DLL_ENTRY",
+						"BUSI_CODE",
+						"NODE_MODE",
+						"IS_NAV",
+						"INTER_AGENCY_FLAG",
+						"EFT_FLAG",
+						"MENU_SPELL",
+						"RELA_SYS"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_MENU"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_MENU"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 10:59:44.387 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 10:59:44.388 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 10:59:44.388 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 10:59:44.389 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 10:59:50.223 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 10:59:50.257 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_MENU] has columns:[MENU_ID,MENU_NAME,PAR_MENU,MENU_LVL,MENU_PUR,MENU_LINK,MENU_STA,MENU_ICO,MENU_PLAT,MENU_BPM_FORM,MENU_DLL,MENU_DLL_ENTRY,BUSI_CODE,NODE_MODE,IS_NAV,INTER_AGENCY_FLAG,EFT_FLAG,MENU_SPELL,RELA_SYS].
+2023-06-21 10:59:50.332 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_MENU] all columns:[
+MENU_ID,MENU_NAME,PAR_MENU,MENU_LVL,MENU_PUR,MENU_LINK,MENU_STA,MENU_ICO,MENU_PLAT,MENU_BPM_FORM,MENU_DLL,MENU_DLL_ENTRY,BUSI_CODE,NODE_MODE,IS_NAV,INTER_AGENCY_FLAG,EFT_FLAG,MENU_SPELL,RELA_SYS
+].
+2023-06-21 10:59:50.344 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (MENU_ID,MENU_NAME,PAR_MENU,MENU_LVL,MENU_PUR,MENU_LINK,MENU_STA,MENU_ICO,MENU_PLAT,MENU_BPM_FORM,MENU_DLL,MENU_DLL_ENTRY,BUSI_CODE,NODE_MODE,IS_NAV,INTER_AGENCY_FLAG,EFT_FLAG,MENU_SPELL,RELA_SYS) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 10:59:50.344 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 10:59:50.344 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 10:59:50.344 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 10:59:50.354 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_MENU]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 10:59:50.355 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 10:59:50.356 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-21 10:59:50.357 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 10:59:50.357 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 10:59:50.369 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 10:59:50.372 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 10:59:50.373 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 10:59:50.378 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 10:59:50.382 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 10:59:50.382 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 10:59:50.389 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 10:59:50.393 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select MENU_ID,MENU_NAME,PAR_MENU,MENU_LVL,MENU_PUR,MENU_LINK,MENU_STA,MENU_ICO,MENU_PLAT,MENU_BPM_FORM,MENU_DLL,MENU_DLL_ENTRY,BUSI_CODE,NODE_MODE,IS_NAV,INTER_AGENCY_FLAG,EFT_FLAG,MENU_SPELL,RELA_SYS from UPM_MENU 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:59:50.935 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select MENU_ID,MENU_NAME,PAR_MENU,MENU_LVL,MENU_PUR,MENU_LINK,MENU_STA,MENU_ICO,MENU_PLAT,MENU_BPM_FORM,MENU_DLL,MENU_DLL_ENTRY,BUSI_CODE,NODE_MODE,IS_NAV,INTER_AGENCY_FLAG,EFT_FLAG,MENU_SPELL,RELA_SYS from UPM_MENU 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:59:51.254 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[865]ms
+2023-06-21 10:59:51.254 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-21 11:00:00.395 [job-0] INFO  StandAloneJobContainerCommunicator - Total 8050 records, 732717 bytes | Speed 71.55KB/s, 805 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.414s |  All Task WaitReaderTime 0.088s | Percentage 100.00%
+2023-06-21 11:00:00.395 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-06-21 11:00:00.395 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-06-21 11:00:00.395 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do post work.
+2023-06-21 11:00:00.396 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-06-21 11:00:00.396 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-06-21 11:00:00.397 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+
+2023-06-21 11:00:00.397 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-06-21 11:00:00.397 [job-0] INFO  StandAloneJobContainerCommunicator - Total 8050 records, 732717 bytes | Speed 71.55KB/s, 805 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.414s |  All Task WaitReaderTime 0.088s | Percentage 100.00%
+2023-06-21 11:00:00.398 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-06-21 10:59:44
+任务结束时刻                    : 2023-06-21 11:00:00
+任务总计耗时                    :                 16s
+任务平均流量                    :           71.55KB/s
+记录写入速度                    :            805rec/s
+读出记录总数                    :                8050
+读写失败总数                    :                   0
+

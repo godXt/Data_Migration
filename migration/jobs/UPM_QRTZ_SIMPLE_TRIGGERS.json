@@ -1,0 +1,68 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SCHED_NAME",
+                            "TRIGGER_NAME",
+                            "TRIGGER_GROUP",
+                            "REPEAT_COUNT",
+                            "REPEAT_INTERVAL",
+                            "TIMES_TRIGGERED"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_QRTZ_SIMPLE_TRIGGERS"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SCHED_NAME",
+                            "TRIGGER_NAME",
+                            "TRIGGER_GROUP",
+                            "REPEAT_COUNT",
+                            "REPEAT_INTERVAL",
+                            "TIMES_TRIGGERED"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_QRTZ_SIMPLE_TRIGGERS"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_QRTZ_SIMPLE_TRIGGERS"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

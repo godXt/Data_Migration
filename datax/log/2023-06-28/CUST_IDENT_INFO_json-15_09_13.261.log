@@ -1,0 +1,154 @@
+2023-06-28 15:09:13.511 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-28 15:09:13.513 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-28 15:09:13.528 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-28 15:09:13.536 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-28 15:09:13.554 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"CUST_CODE",
+						"IDENT_TYPE",
+						"IDENT_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"CIF_CUST_IDENT_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"CUST_CODE",
+						"IDENT_TYPE",
+						"IDENT_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"CIF_CUST_IDENT_INFO"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE CIF_CUST_IDENT_INFO"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-28 15:09:13.568 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-28 15:09:13.570 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-28 15:09:13.570 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-28 15:09:13.573 [main] INFO  JobContainer - Set jobId = 0
+2023-06-28 15:09:19.580 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-28 15:09:19.634 [job-0] INFO  OriginalConfPretreatmentUtil - table:[CIF_CUST_IDENT_INFO] has columns:[CUST_CODE,IDENT_TYPE,IDENT_CODE].
+2023-06-28 15:09:22.726 [job-0] INFO  OriginalConfPretreatmentUtil - table:[CIF_CUST_IDENT_INFO] all columns:[
+CUST_CODE,IDENT_TYPE,IDENT_CODE
+].
+2023-06-28 15:09:22.736 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (CUST_CODE,IDENT_TYPE,IDENT_CODE) VALUES(?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-28 15:09:22.736 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-28 15:09:22.737 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-28 15:09:22.737 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-28 15:09:22.746 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE CIF_CUST_IDENT_INFO]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-28 15:09:22.747 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-28 15:09:22.748 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-28 15:09:22.750 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-28 15:09:22.750 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-28 15:09:22.763 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-28 15:09:22.765 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-28 15:09:22.767 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-28 15:09:22.771 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-28 15:09:22.774 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-28 15:09:22.774 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-28 15:09:22.780 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-28 15:09:22.784 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select CUST_CODE,IDENT_TYPE,IDENT_CODE from CIF_CUST_IDENT_INFO 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-28 15:09:32.793 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 0.00%
+2023-06-28 15:09:42.793 [job-0] INFO  StandAloneJobContainerCommunicator - Total 774656 records, 14716953 bytes | Speed 1.40MB/s, 77465 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 9.498s |  All Task WaitReaderTime 0.353s | Percentage 0.00%
+2023-06-28 15:09:52.809 [job-0] INFO  StandAloneJobContainerCommunicator - Total 1528320 records, 28993380 bytes | Speed 1.36MB/s, 75366 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 19.212s |  All Task WaitReaderTime 0.633s | Percentage 0.00%
+2023-06-28 15:10:02.821 [job-0] INFO  StandAloneJobContainerCommunicator - Total 2025984 records, 39267512 bytes | Speed 1003.33KB/s, 49766 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 29.046s |  All Task WaitReaderTime 0.819s | Percentage 0.00%
+2023-06-28 15:10:12.826 [job-0] INFO  StandAloneJobContainerCommunicator - Total 2691584 records, 52448034 bytes | Speed 1.26MB/s, 66560 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 38.797s |  All Task WaitReaderTime 1.065s | Percentage 0.00%
+2023-06-28 15:10:22.827 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3228160 records, 60863798 bytes | Speed 821.85KB/s, 53657 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 47.842s |  All Task WaitReaderTime 1.853s | Percentage 0.00%
+2023-06-28 15:10:22.885 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select CUST_CODE,IDENT_TYPE,IDENT_CODE from CIF_CUST_IDENT_INFO 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-28 15:10:23.002 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[60222]ms
+2023-06-28 15:10:23.002 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-28 15:10:32.830 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3668032 records, 66955105 bytes | Speed 594.85KB/s, 43987 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 57.383s |  All Task WaitReaderTime 2.021s | Percentage 100.00%
+2023-06-28 15:10:32.831 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-06-28 15:10:32.831 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-06-28 15:10:32.832 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do post work.
+2023-06-28 15:10:32.832 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-06-28 15:10:32.832 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-06-28 15:10:32.833 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 26                 | 26                 | 26                 | 0.048s             | 0.048s             | 0.048s             
+
+2023-06-28 15:10:32.833 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-06-28 15:10:32.833 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3668032 records, 66955105 bytes | Speed 934.08KB/s, 52400 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 57.383s |  All Task WaitReaderTime 2.021s | Percentage 100.00%
+2023-06-28 15:10:32.834 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-06-28 15:09:13
+任务结束时刻                    : 2023-06-28 15:10:32
+任务总计耗时                    :                 79s
+任务平均流量                    :          934.08KB/s
+记录写入速度                    :          52400rec/s
+读出记录总数                    :             3668032
+读写失败总数                    :                   0
+

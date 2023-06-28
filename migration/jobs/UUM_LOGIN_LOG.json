@@ -1,0 +1,68 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "LOG_ID",
+                            "OP_CODE",
+                            "LOGIN_TIME",
+                            "LOGINOUT_TIME",
+                            "OP_SITE",
+                            "SESSION_ID"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UUM_LOGIN_LOG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "LOG_ID",
+                            "OP_CODE",
+                            "LOGIN_TIME",
+                            "LOGINOUT_TIME",
+                            "OP_SITE",
+                            "SESSION_ID"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UUM_LOGIN_LOG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UUM_LOGIN_LOG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

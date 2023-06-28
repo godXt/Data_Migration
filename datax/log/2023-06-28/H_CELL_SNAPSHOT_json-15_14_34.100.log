@@ -1,0 +1,110 @@
+2023-06-28 15:14:34.371 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-28 15:14:34.375 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-28 15:14:34.397 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-28 15:14:34.406 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-28 15:14:34.425 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"SNAPSHOT_ID",
+						"CELL_ID",
+						"CELL_TAG",
+						"CELL_TYPE",
+						"PAR_ID",
+						"SOURCE_ID",
+						"TARGET_ID"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"GRAPH_CELL_SNAPSHOT"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"SNAPSHOT_ID",
+						"CELL_ID",
+						"CELL_TAG",
+						"CELL_TYPE",
+						"PAR_ID",
+						"SOURCE_ID",
+						"TARGET_ID"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"GRAPH_CELL_SNAPSHOT"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE GRAPH_CELL_SNAPSHOT"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-28 15:14:34.446 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-28 15:14:34.448 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-28 15:14:34.448 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-28 15:14:34.451 [main] INFO  JobContainer - Set jobId = 0
+2023-06-28 15:14:43.359 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-28 15:14:43.400 [job-0] INFO  OriginalConfPretreatmentUtil - table:[GRAPH_CELL_SNAPSHOT] has columns:[SNAPSHOT_ID,CELL_ID,CELL_TAG,CELL_TYPE,PAR_ID,SOURCE_ID,TARGET_ID].
+2023-06-28 15:14:43.592 [job-0] INFO  OriginalConfPretreatmentUtil - table:[GRAPH_CELL_SNAPSHOT] all columns:[
+SNAPSHOT_ID,CELL_ID,CELL_TAG,CELL_TYPE,PAR_ID,SOURCE_ID,TARGET_ID
+].
+2023-06-28 15:14:43.656 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (SNAPSHOT_ID,CELL_ID,CELL_TAG,CELL_TYPE,PAR_ID,SOURCE_ID,TARGET_ID) VALUES(?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-28 15:14:43.657 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-28 15:14:43.657 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-28 15:14:43.657 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .

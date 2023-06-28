@@ -1,0 +1,100 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "OCCUR_TIME",
+                            "OCCUR_DATE",
+                            "OP_CODE",
+                            "CHANNEL",
+                            "BUS_CODE",
+                            "BUS_NAME",
+                            "DATA_OP_TYPE",
+                            "OLD_DATA",
+                            "NEW_DATA",
+                            "DATA_OP_STATUS",
+                            "ERROR_MESSAGE",
+                            "ERROR_CODE",
+                            "SYS_CODE",
+                            "SYS_SERIAL_NO",
+                            "SYS_USER_CODE",
+                            "OP_SITE",
+                            "F_YZT_CHANNEL",
+                            "REMARK",
+                            "EXEC_TIMES",
+                            "MENU_ID",
+                            "MENU_NAME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_OPT_LOG"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SERIAL_NO",
+                            "OCCUR_TIME",
+                            "OCCUR_DATE",
+                            "OP_CODE",
+                            "CHANNEL",
+                            "BUS_CODE",
+                            "BUS_NAME",
+                            "DATA_OP_TYPE",
+                            "OLD_DATA",
+                            "NEW_DATA",
+                            "DATA_OP_STATUS",
+                            "ERROR_MESSAGE",
+                            "ERROR_CODE",
+                            "SYS_CODE",
+                            "SYS_SERIAL_NO",
+                            "SYS_USER_CODE",
+                            "OP_SITE",
+                            "F_YZT_CHANNEL",
+                            "REMARK",
+                            "EXEC_TIMES",
+                            "MENU_ID",
+                            "MENU_NAME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_OPT_LOG"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_OPT_LOG"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "SRC_FUNC_CODE",
+                            "SRC_FUNC_NAME",
+                            "TGT_FUNC_CODE",
+                            "TGT_FUNC_TYPE",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_FUNC_CODE_TRANS"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SUBSYS",
+                            "SRC_FUNC_CODE",
+                            "SRC_FUNC_NAME",
+                            "TGT_FUNC_CODE",
+                            "TGT_FUNC_TYPE",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_FUNC_CODE_TRANS"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_FUNC_CODE_TRANS"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

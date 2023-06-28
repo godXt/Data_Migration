@@ -1,0 +1,84 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "CLASS_NAME",
+                            "SEQU",
+                            "DESCRIPTION",
+                            "REDO",
+                            "STATUS",
+                            "REF_BUSI_TYPE",
+                            "HANDLE_NODE",
+                            "ALLOW_SKIP",
+                            "DEPENDENCY",
+                            "ATOM_PARAM",
+                            "TRANS_TYPE",
+                            "SYS_CODES",
+                            "LIMIT_DAYS"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_BUSI_TRANS_CONF"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "BUSI_CODE",
+                            "CLASS_NAME",
+                            "SEQU",
+                            "DESCRIPTION",
+                            "REDO",
+                            "STATUS",
+                            "REF_BUSI_TYPE",
+                            "HANDLE_NODE",
+                            "ALLOW_SKIP",
+                            "DEPENDENCY",
+                            "ATOM_PARAM",
+                            "TRANS_TYPE",
+                            "SYS_CODES",
+                            "LIMIT_DAYS"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_BUSI_TRANS_CONF"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_BUSI_TRANS_CONF"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

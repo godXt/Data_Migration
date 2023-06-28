@@ -1,0 +1,76 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ACS_ID",
+                            "CON_ID",
+                            "PARAM_NAME",
+                            "VAL_EXPR",
+                            "VAL_BEX",
+                            "PARAM_CODE",
+                            "DYNAMIC_CHECK",
+                            "VALID_RULE",
+                            "VALID_PARAM",
+                            "SORT_NO"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "KSCS_ACS_DISPLAY_INFO"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ACS_ID",
+                            "CON_ID",
+                            "PARAM_NAME",
+                            "VAL_EXPR",
+                            "VAL_BEX",
+                            "PARAM_CODE",
+                            "DYNAMIC_CHECK",
+                            "VALID_RULE",
+                            "VALID_PARAM",
+                            "SORT_NO"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE KSCS_ACS_DISPLAY_INFO"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "KSCS_ACS_DISPLAY_INFO"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

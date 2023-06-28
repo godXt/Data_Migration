@@ -1,0 +1,96 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "HI_TASKINST_ID",
+                            "PROC_DEF_ID",
+                            "TASK_DEF_KEY",
+                            "PROC_INST_ID",
+                            "EXECUTION_ID",
+                            "PARENT_TASK_ID",
+                            "HTNAME",
+                            "DESCRIPTION",
+                            "OWNER",
+                            "ASSIGNEE",
+                            "START_TIME",
+                            "CLAIM_TIME",
+                            "END_TIME",
+                            "DURATION",
+                            "DELETE_REASON",
+                            "PRIORITY",
+                            "DUE_DATE",
+                            "FORM_KEY",
+                            "CREATE_TIME",
+                            "PRE_USER_TASK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UWK_HI_TASKINST_BAK"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "HI_TASKINST_ID",
+                            "PROC_DEF_ID",
+                            "TASK_DEF_KEY",
+                            "PROC_INST_ID",
+                            "EXECUTION_ID",
+                            "PARENT_TASK_ID",
+                            "HTNAME",
+                            "DESCRIPTION",
+                            "OWNER",
+                            "ASSIGNEE",
+                            "START_TIME",
+                            "CLAIM_TIME",
+                            "END_TIME",
+                            "DURATION",
+                            "DELETE_REASON",
+                            "PRIORITY",
+                            "DUE_DATE",
+                            "FORM_KEY",
+                            "CREATE_TIME",
+                            "PRE_USER_TASK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UWK_HI_TASKINST_BAK"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UWK_HI_TASKINST_BAK"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

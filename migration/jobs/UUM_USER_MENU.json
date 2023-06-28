@@ -1,0 +1,66 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "OP_CODE",
+                            "OP_ROLE",
+                            "MENU_ID",
+                            "MENU_PUR",
+                            "ORDER_ID"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UUM_USER_MENU"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "OP_CODE",
+                            "OP_ROLE",
+                            "MENU_ID",
+                            "MENU_PUR",
+                            "ORDER_ID"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UUM_USER_MENU"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UUM_USER_MENU"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

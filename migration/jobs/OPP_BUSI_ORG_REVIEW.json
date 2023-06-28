@@ -1,0 +1,64 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ORG_CODE",
+                            "BUSI_CODE",
+                            "REVIEW_MODE",
+                            "REMARK"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "OPP_BUSI_ORG_REVIEW"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ORG_CODE",
+                            "BUSI_CODE",
+                            "REVIEW_MODE",
+                            "REMARK"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE OPP_BUSI_ORG_REVIEW"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "OPP_BUSI_ORG_REVIEW"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

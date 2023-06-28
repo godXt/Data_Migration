@@ -1,0 +1,285 @@
+2023-06-28 14:15:57.297 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-28 14:15:57.299 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-28 14:15:57.308 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-28 14:15:57.320 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-28 14:15:57.356 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"ACS_ID",
+						"CUST_AGMT_TYPE",
+						"USER_TYPE",
+						"STKBD",
+						"TRDACCT_EXCLS",
+						"PROF_INVESTOR_SOURCE",
+						"AGMT_CHK_CLS",
+						"AGMT_HANDLE_TYPE",
+						"RESTRICT_TYPE",
+						"CHK_COND",
+						"CON_ID",
+						"EXT_VAL",
+						"HANDLE_TIP",
+						"REMARK",
+						"BIZ_TYPE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"KSCS_AGMT_ACS_CONF"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"ACS_ID",
+						"CUST_AGMT_TYPE",
+						"USER_TYPE",
+						"STKBD",
+						"TRDACCT_EXCLS",
+						"PROF_INVESTOR_SOURCE",
+						"AGMT_CHK_CLS",
+						"AGMT_HANDLE_TYPE",
+						"RESTRICT_TYPE",
+						"CHK_COND",
+						"CON_ID",
+						"EXT_VAL",
+						"HANDLE_TIP",
+						"REMARK",
+						"BIZ_TYPE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"KSCS_AGMT_ACS_CONF"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE KSCS_AGMT_ACS_CONF"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-28 14:15:57.385 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-28 14:15:57.388 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-28 14:15:57.388 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-28 14:15:57.390 [main] INFO  JobContainer - Set jobId = 0
+2023-06-28 14:15:57.895 [job-0] ERROR JobContainer - Exception when job run
+java.lang.Error: IP Helper Library GetIpAddrTable function failed
+	at java.net.NetworkInterface.getAll(Native Method) ~[na:1.8.0_192]
+	at java.net.NetworkInterface.getNetworkInterfaces(NetworkInterface.java:355) ~[na:1.8.0_192]
+	at sun.security.provider.SeedGenerator.addNetworkAdapterInfo(SeedGenerator.java:233) ~[na:1.8.0_192]
+	at sun.security.provider.SeedGenerator.access$000(SeedGenerator.java:80) ~[na:1.8.0_192]
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:183) ~[na:1.8.0_192]
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:168) ~[na:1.8.0_192]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_192]
+	at sun.security.provider.SeedGenerator.getSystemEntropy(SeedGenerator.java:168) ~[na:1.8.0_192]
+	at sun.security.provider.SecureRandom$SeederHolder.<clinit>(SecureRandom.java:201) ~[na:1.8.0_192]
+	at sun.security.provider.SecureRandom.engineNextBytes(SecureRandom.java:221) ~[na:1.8.0_192]
+	at java.security.SecureRandom.nextBytes(SecureRandom.java:468) ~[na:1.8.0_192]
+	at java.util.UUID.randomUUID(UUID.java:145) ~[na:1.8.0_192]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1315) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012) ~[sqljdbc4-4.0.jar:na]
+	at java.sql.DriverManager.getConnection(DriverManager.java:664) ~[na:1.8.0_192]
+	at java.sql.DriverManager.getConnection(DriverManager.java:208) ~[na:1.8.0_192]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:395) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:387) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:354) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.testConnWithoutRetry(DBUtil.java:591) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:63) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:51) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.common.util.RetryUtil$Retry.call(RetryUtil.java:164) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.common.util.RetryUtil$Retry.doRetry(RetryUtil.java:111) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.common.util.RetryUtil.executeWithRetry(RetryUtil.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.chooseJdbcUrl(DBUtil.java:51) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.dealJdbcAndTable(OriginalConfPretreatmentUtil.java:92) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.simplifyConf(OriginalConfPretreatmentUtil.java:59) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.doPretreatment(OriginalConfPretreatmentUtil.java:33) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader$Job.init(CommonRdbmsReader.java:55) ~[plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:40) ~[sqlserverreader-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-28 14:15:57.900 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 0.00%
+2023-06-28 14:15:57.904 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-02], Description:[DataX引擎运行过程出错，具体原因请参看DataX运行结束时的错误诊断信息  .].  - java.lang.Error: IP Helper Library GetIpAddrTable function failed
+	at java.net.NetworkInterface.getAll(Native Method)
+	at java.net.NetworkInterface.getNetworkInterfaces(NetworkInterface.java:355)
+	at sun.security.provider.SeedGenerator.addNetworkAdapterInfo(SeedGenerator.java:233)
+	at sun.security.provider.SeedGenerator.access$000(SeedGenerator.java:80)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:183)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:168)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.security.provider.SeedGenerator.getSystemEntropy(SeedGenerator.java:168)
+	at sun.security.provider.SecureRandom$SeederHolder.<clinit>(SecureRandom.java:201)
+	at sun.security.provider.SecureRandom.engineNextBytes(SecureRandom.java:221)
+	at java.security.SecureRandom.nextBytes(SecureRandom.java:468)
+	at java.util.UUID.randomUUID(UUID.java:145)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1315)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:395)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:387)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:354)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.testConnWithoutRetry(DBUtil.java:591)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:63)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:51)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.call(RetryUtil.java:164)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.doRetry(RetryUtil.java:111)
+	at com.alibaba.datax.common.util.RetryUtil.executeWithRetry(RetryUtil.java:30)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.chooseJdbcUrl(DBUtil.java:51)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.dealJdbcAndTable(OriginalConfPretreatmentUtil.java:92)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.simplifyConf(OriginalConfPretreatmentUtil.java:59)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.doPretreatment(OriginalConfPretreatmentUtil.java:33)
+	at com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader$Job.init(CommonRdbmsReader.java:55)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:40)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+ - java.lang.Error: IP Helper Library GetIpAddrTable function failed
+	at java.net.NetworkInterface.getAll(Native Method)
+	at java.net.NetworkInterface.getNetworkInterfaces(NetworkInterface.java:355)
+	at sun.security.provider.SeedGenerator.addNetworkAdapterInfo(SeedGenerator.java:233)
+	at sun.security.provider.SeedGenerator.access$000(SeedGenerator.java:80)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:183)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:168)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.security.provider.SeedGenerator.getSystemEntropy(SeedGenerator.java:168)
+	at sun.security.provider.SecureRandom$SeederHolder.<clinit>(SecureRandom.java:201)
+	at sun.security.provider.SecureRandom.engineNextBytes(SecureRandom.java:221)
+	at java.security.SecureRandom.nextBytes(SecureRandom.java:468)
+	at java.util.UUID.randomUUID(UUID.java:145)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1315)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:395)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:387)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:354)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.testConnWithoutRetry(DBUtil.java:591)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:63)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:51)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.call(RetryUtil.java:164)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.doRetry(RetryUtil.java:111)
+	at com.alibaba.datax.common.util.RetryUtil.executeWithRetry(RetryUtil.java:30)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.chooseJdbcUrl(DBUtil.java:51)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.dealJdbcAndTable(OriginalConfPretreatmentUtil.java:92)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.simplifyConf(OriginalConfPretreatmentUtil.java:59)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.doPretreatment(OriginalConfPretreatmentUtil.java:33)
+	at com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader$Job.init(CommonRdbmsReader.java:55)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:40)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:48)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:162)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+Caused by: java.lang.Error: IP Helper Library GetIpAddrTable function failed
+	at java.net.NetworkInterface.getAll(Native Method)
+	at java.net.NetworkInterface.getNetworkInterfaces(NetworkInterface.java:355)
+	at sun.security.provider.SeedGenerator.addNetworkAdapterInfo(SeedGenerator.java:233)
+	at sun.security.provider.SeedGenerator.access$000(SeedGenerator.java:80)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:183)
+	at sun.security.provider.SeedGenerator$1.run(SeedGenerator.java:168)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.security.provider.SeedGenerator.getSystemEntropy(SeedGenerator.java:168)
+	at sun.security.provider.SecureRandom$SeederHolder.<clinit>(SecureRandom.java:201)
+	at sun.security.provider.SecureRandom.engineNextBytes(SecureRandom.java:221)
+	at java.security.SecureRandom.nextBytes(SecureRandom.java:468)
+	at java.util.UUID.randomUUID(UUID.java:145)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1315)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:395)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:387)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.connect(DBUtil.java:354)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.testConnWithoutRetry(DBUtil.java:591)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:63)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil$2.call(DBUtil.java:51)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.call(RetryUtil.java:164)
+	at com.alibaba.datax.common.util.RetryUtil$Retry.doRetry(RetryUtil.java:111)
+	at com.alibaba.datax.common.util.RetryUtil.executeWithRetry(RetryUtil.java:30)
+	at com.alibaba.datax.plugin.rdbms.util.DBUtil.chooseJdbcUrl(DBUtil.java:51)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.dealJdbcAndTable(OriginalConfPretreatmentUtil.java:92)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.simplifyConf(OriginalConfPretreatmentUtil.java:59)
+	at com.alibaba.datax.plugin.rdbms.reader.util.OriginalConfPretreatmentUtil.doPretreatment(OriginalConfPretreatmentUtil.java:33)
+	at com.alibaba.datax.plugin.rdbms.reader.CommonRdbmsReader$Job.init(CommonRdbmsReader.java:55)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:40)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	... 3 more
+

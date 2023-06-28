@@ -1,0 +1,249 @@
+2023-06-21 11:02:48.052 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 11:02:48.054 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 11:02:48.061 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 11:02:48.065 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 11:02:48.081 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"BUS_CODE",
+						"BUS_NAME",
+						"BUS_TYPE",
+						"ENABLE_SOAP",
+						"ACCESS_CONTROL",
+						"DATA_OP_TYPE",
+						"REC_FLAG",
+						"GENERAL_REVIEW_KEY",
+						"LBM_CODE",
+						"VALID_PERM",
+						"ENABLE_REVIEW"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"UPM_SYS_FUNC_BAK"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"BUS_CODE",
+						"BUS_NAME",
+						"BUS_TYPE",
+						"ENABLE_SOAP",
+						"ACCESS_CONTROL",
+						"DATA_OP_TYPE",
+						"REC_FLAG",
+						"GENERAL_REVIEW_KEY",
+						"LBM_CODE",
+						"VALID_PERM",
+						"ENABLE_REVIEW"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_SYS_FUNC_BAK"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_SYS_FUNC_BAK"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 11:02:48.111 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 11:02:48.112 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 11:02:48.112 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 11:02:48.115 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 11:02:48.132 [job-0] ERROR JobContainer - Exception when job run
+java.lang.OutOfMemoryError: null
+	at java.util.zip.ZipFile.open(Native Method) ~[na:1.8.0_192]
+	at java.util.zip.ZipFile.<init>(ZipFile.java:225) ~[na:1.8.0_192]
+	at java.util.zip.ZipFile.<init>(ZipFile.java:155) ~[na:1.8.0_192]
+	at java.util.jar.JarFile.<init>(JarFile.java:166) ~[na:1.8.0_192]
+	at java.util.jar.JarFile.<init>(JarFile.java:103) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:940) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader.access$800(URLClassPath.java:801) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:886) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:879) ~[na:1.8.0_192]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader.ensureOpen(URLClassPath.java:878) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:851) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:575) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:565) ~[na:1.8.0_192]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:564) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:529) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath.getNextLoader(URLClassPath.java:494) ~[na:1.8.0_192]
+	at sun.misc.URLClassPath.getResource(URLClassPath.java:248) ~[na:1.8.0_192]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366) ~[na:1.8.0_192]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363) ~[na:1.8.0_192]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_192]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362) ~[na:1.8.0_192]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_192]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_192]
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:38) ~[sqlserverreader-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 11:02:48.151 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 0.00%
+2023-06-21 11:02:48.152 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-02], Description:[DataX引擎运行过程出错，具体原因请参看DataX运行结束时的错误诊断信息  .].  - java.lang.OutOfMemoryError
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:225)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:155)
+	at java.util.jar.JarFile.<init>(JarFile.java:166)
+	at java.util.jar.JarFile.<init>(JarFile.java:103)
+	at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:940)
+	at sun.misc.URLClassPath$JarLoader.access$800(URLClassPath.java:801)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:886)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:879)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath$JarLoader.ensureOpen(URLClassPath.java:878)
+	at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:851)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:575)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:565)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:564)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:529)
+	at sun.misc.URLClassPath.getNextLoader(URLClassPath.java:494)
+	at sun.misc.URLClassPath.getResource(URLClassPath.java:248)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:38)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+ - java.lang.OutOfMemoryError
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:225)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:155)
+	at java.util.jar.JarFile.<init>(JarFile.java:166)
+	at java.util.jar.JarFile.<init>(JarFile.java:103)
+	at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:940)
+	at sun.misc.URLClassPath$JarLoader.access$800(URLClassPath.java:801)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:886)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:879)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath$JarLoader.ensureOpen(URLClassPath.java:878)
+	at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:851)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:575)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:565)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:564)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:529)
+	at sun.misc.URLClassPath.getNextLoader(URLClassPath.java:494)
+	at sun.misc.URLClassPath.getResource(URLClassPath.java:248)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:38)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:48)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:162)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+Caused by: java.lang.OutOfMemoryError
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:225)
+	at java.util.zip.ZipFile.<init>(ZipFile.java:155)
+	at java.util.jar.JarFile.<init>(JarFile.java:166)
+	at java.util.jar.JarFile.<init>(JarFile.java:103)
+	at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:940)
+	at sun.misc.URLClassPath$JarLoader.access$800(URLClassPath.java:801)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:886)
+	at sun.misc.URLClassPath$JarLoader$1.run(URLClassPath.java:879)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath$JarLoader.ensureOpen(URLClassPath.java:878)
+	at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:851)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:575)
+	at sun.misc.URLClassPath$3.run(URLClassPath.java:565)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:564)
+	at sun.misc.URLClassPath.getLoader(URLClassPath.java:529)
+	at sun.misc.URLClassPath.getNextLoader(URLClassPath.java:494)
+	at sun.misc.URLClassPath.getResource(URLClassPath.java:248)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at com.alibaba.datax.plugin.reader.sqlserverreader.SqlServerReader$Job.init(SqlServerReader.java:38)
+	at com.alibaba.datax.core.job.JobContainer.initJobReader(JobContainer.java:673)
+	at com.alibaba.datax.core.job.JobContainer.init(JobContainer.java:303)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:113)
+	... 3 more
+

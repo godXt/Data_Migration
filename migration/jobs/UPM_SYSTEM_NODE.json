@@ -1,0 +1,72 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SYS_CODE",
+                            "SERVER_ID",
+                            "SERVER_IP",
+                            "SERVER_STATUS",
+                            "ORG_CODE",
+                            "ROUTE_FLAG",
+                            "QUERY_FLAG",
+                            "NODE_NAME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UPM_SYSTEM_NODE"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "SYS_CODE",
+                            "SERVER_ID",
+                            "SERVER_IP",
+                            "SERVER_STATUS",
+                            "ORG_CODE",
+                            "ROUTE_FLAG",
+                            "QUERY_FLAG",
+                            "NODE_NAME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UPM_SYSTEM_NODE"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UPM_SYSTEM_NODE"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

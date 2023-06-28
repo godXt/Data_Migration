@@ -1,0 +1,108 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ORG_CODE",
+                            "ORG_TYPE",
+                            "ORG_CLS",
+                            "ORG_NAME",
+                            "ORG_FULL_NAME",
+                            "ORG_STATUS",
+                            "PAR_ORG",
+                            "ORG_LVL",
+                            "ACCT_LEN",
+                            "ACCT_PREFIX",
+                            "AREA_NO",
+                            "ZIP_CODE",
+                            "AREA_ADDR",
+                            "ORG_TEL",
+                            "NIGHT_MARKET",
+                            "LEGAL_ID",
+                            "REMARK",
+                            "IS_COMMON",
+                            "EMAIL",
+                            "FAX",
+                            "LINKMAN",
+                            "FOREIGN_CPTL_FLAG",
+                            "BIZ_AREA",
+                            "DISTRICT",
+                            "CFM_FLAG",
+                            "IS_SEPARATE"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UEM_ORG_INFO_BAK"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "ORG_CODE",
+                            "ORG_TYPE",
+                            "ORG_CLS",
+                            "ORG_NAME",
+                            "ORG_FULL_NAME",
+                            "ORG_STATUS",
+                            "PAR_ORG",
+                            "ORG_LVL",
+                            "ACCT_LEN",
+                            "ACCT_PREFIX",
+                            "AREA_NO",
+                            "ZIP_CODE",
+                            "AREA_ADDR",
+                            "ORG_TEL",
+                            "NIGHT_MARKET",
+                            "LEGAL_ID",
+                            "REMARK",
+                            "IS_COMMON",
+                            "EMAIL",
+                            "FAX",
+                            "LINKMAN",
+                            "FOREIGN_CPTL_FLAG",
+                            "BIZ_AREA",
+                            "DISTRICT",
+                            "CFM_FLAG",
+                            "IS_SEPARATE"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UEM_ORG_INFO_BAK"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UEM_ORG_INFO_BAK"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

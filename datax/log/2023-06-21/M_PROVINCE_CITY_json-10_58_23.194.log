@@ -1,0 +1,190 @@
+2023-06-21 10:58:23.356 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 10:58:23.357 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 10:58:23.366 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 10:58:23.370 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 10:58:23.385 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"AREA_ID",
+						"AREA_NAME",
+						"AREA_SPELL",
+						"PAR_ID",
+						"AREA_TYPE",
+						"POST_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"UPM_PROVINCE_CITY"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"AREA_ID",
+						"AREA_NAME",
+						"AREA_SPELL",
+						"PAR_ID",
+						"AREA_TYPE",
+						"POST_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_PROVINCE_CITY"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_PROVINCE_CITY"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-06-21 10:58:23.399 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 10:58:23.400 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 10:58:23.400 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 10:58:23.401 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 10:58:29.067 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 10:58:29.097 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_PROVINCE_CITY] has columns:[AREA_ID,AREA_NAME,AREA_SPELL,PAR_ID,AREA_TYPE,POST_CODE].
+2023-06-21 10:58:29.164 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_PROVINCE_CITY] all columns:[
+AREA_ID,AREA_NAME,AREA_SPELL,PAR_ID,AREA_TYPE,POST_CODE
+].
+2023-06-21 10:58:29.174 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (AREA_ID,AREA_NAME,AREA_SPELL,PAR_ID,AREA_TYPE,POST_CODE) VALUES(?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 10:58:29.174 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 10:58:29.175 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 10:58:29.175 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 10:58:29.184 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_PROVINCE_CITY]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 10:58:29.185 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 10:58:29.185 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-06-21 10:58:29.187 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 10:58:29.187 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 10:58:29.197 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 10:58:29.199 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 10:58:29.201 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 10:58:29.205 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 10:58:29.207 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 10:58:29.207 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 10:58:29.213 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 10:58:29.216 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select AREA_ID,AREA_NAME,AREA_SPELL,PAR_ID,AREA_TYPE,POST_CODE from UPM_PROVINCE_CITY 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:58:29.347 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。
+2023-06-21 10:58:29.351 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:291) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-06-21 10:58:29.354 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":1,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"北京市","type":"STRING"},{"byteSize":3,"index":2,"rawData":"BJS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.355 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":2,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"天津市","type":"STRING"},{"byteSize":3,"index":2,"rawData":"TJS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.356 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":3,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"河北省","type":"STRING"},{"byteSize":3,"index":2,"rawData":"HBS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.357 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":4,"type":"LONG"},{"byteSize":6,"index":1,"rawData":"内蒙古自治区","type":"STRING"},{"byteSize":6,"index":2,"rawData":"NMGZZQ","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.357 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":5,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"山西省","type":"STRING"},{"byteSize":3,"index":2,"rawData":"SXS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.357 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":6,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"辽宁省","type":"STRING"},{"byteSize":3,"index":2,"rawData":"LNS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.358 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":7,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"吉林省","type":"STRING"},{"byteSize":3,"index":2,"rawData":"JLS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.358 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":8,"type":"LONG"},{"byteSize":4,"index":1,"rawData":"黑龙江省","type":"STRING"},{"byteSize":4,"index":2,"rawData":"HLJS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.359 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。","record":[{"byteSize":1,"index":0,"rawData":9,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"上海市","type":"STRING"},{"byteSize":3,"index":2,"rawData":"SHS","type":"STRING"},{"byteSize":1,"index":3,"rawData":"0","type":"STRING"},{"byteSize":1,"index":4,"rawData":"p","type":"STRING"},{"byteSize":0,"index":5,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 10:58:29.920 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select AREA_ID,AREA_NAME,AREA_SPELL,PAR_ID,AREA_TYPE,POST_CODE from UPM_PROVINCE_CITY 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 10:58:30.159 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'UPM_PROVINCE_CITY' 中的标识列插入显式值。
+2023-06-21 10:58:30.629 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[1417]ms
+2023-06-21 10:58:30.630 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-06-21 10:58:39.228 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3315 records, 63981 bytes | Speed 6.25KB/s, 331 records/s | Error 3315 records, 63981 bytes |  All Task WaitWriterTime 0.657s |  All Task WaitReaderTime 0.026s | Percentage 100.00%
+2023-06-21 10:58:39.228 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-21 10:58:39.229 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3315]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 10:58:39.229 [job-0] INFO  StandAloneJobContainerCommunicator - Total 3315 records, 63981 bytes | Speed 62.48KB/s, 3315 records/s | Error 3315 records, 63981 bytes |  All Task WaitWriterTime 0.657s |  All Task WaitReaderTime 0.026s | Percentage 100.00%
+2023-06-21 10:58:39.230 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3315]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

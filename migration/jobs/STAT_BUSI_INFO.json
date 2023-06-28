@@ -1,0 +1,110 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "B_SNO",
+                            "BUSI_CODE",
+                            "PROC_STATUS",
+                            "YZT_CHANNEL",
+                            "START_TIME",
+                            "END_TIME",
+                            "BUSI_TIME",
+                            "BUSI_EFFECT_TIME",
+                            "CUST_CODE",
+                            "CUST_ORG_CODE",
+                            "ACCEPT_OP_CODE",
+                            "ACCEPT_ORG_CODE",
+                            "IS_CHECK",
+                            "CHECK_TIME",
+                            "IS_ERROR",
+                            "ERROR_MSG",
+                            "ERROR_PERSON",
+                            "ERROR_TIME",
+                            "UPDATE_TIME",
+                            "REJECT_NUM",
+                            "REVIEW_NUM",
+                            "CORRECT_NUM",
+                            "ACCEPT_TIME",
+                            "CUST_NAME",
+                            "CUST_TYPE",
+                            "REVIEW_TIME",
+                            "WAIT_CLAIM_TIME"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "STAT_BUSI_INFO"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "B_SNO",
+                            "BUSI_CODE",
+                            "PROC_STATUS",
+                            "YZT_CHANNEL",
+                            "START_TIME",
+                            "END_TIME",
+                            "BUSI_TIME",
+                            "BUSI_EFFECT_TIME",
+                            "CUST_CODE",
+                            "CUST_ORG_CODE",
+                            "ACCEPT_OP_CODE",
+                            "ACCEPT_ORG_CODE",
+                            "IS_CHECK",
+                            "CHECK_TIME",
+                            "IS_ERROR",
+                            "ERROR_MSG",
+                            "ERROR_PERSON",
+                            "ERROR_TIME",
+                            "UPDATE_TIME",
+                            "REJECT_NUM",
+                            "REVIEW_NUM",
+                            "CORRECT_NUM",
+                            "ACCEPT_TIME",
+                            "CUST_NAME",
+                            "CUST_TYPE",
+                            "REVIEW_TIME",
+                            "WAIT_CLAIM_TIME"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE STAT_BUSI_INFO"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "STAT_BUSI_INFO"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

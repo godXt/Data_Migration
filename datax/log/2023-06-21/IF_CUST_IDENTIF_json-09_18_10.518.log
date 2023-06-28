@@ -1,0 +1,208 @@
+2023-06-21 09:18:10.717 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-06-21 09:18:10.719 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-06-21 09:18:10.729 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-06-21 09:18:10.733 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-06-21 09:18:10.748 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"sqlserverreader",
+				"parameter":{
+					"column":[
+						"CUST_CODE",
+						"CUST_NAME",
+						"CUACCT_CODE",
+						"USER_NAME",
+						"USER_CODE",
+						"INT_ORG",
+						"OPEN_DATE",
+						"ID_CODE",
+						"ID_TYPE",
+						"ORG_FULL_NAME",
+						"MOBILE_TEL",
+						"USER_TYPE",
+						"FISL_CUACCT_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+							],
+							"table":[
+								"CIF_CUST_IDENTIF"
+							]
+						}
+					],
+					"password":"***********",
+					"splitPk":"",
+					"username":"sa"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"CUST_CODE",
+						"CUST_NAME",
+						"CUACCT_CODE",
+						"USER_NAME",
+						"USER_CODE",
+						"INT_ORG",
+						"OPEN_DATE",
+						"ID_CODE",
+						"ID_TYPE",
+						"ORG_FULL_NAME",
+						"MOBILE_TEL",
+						"USER_TYPE",
+						"FISL_CUACCT_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"CIF_CUST_IDENTIF"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE CIF_CUST_IDENTIF"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":10
+		}
+	}
+}
+
+2023-06-21 09:18:10.762 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-06-21 09:18:10.763 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-06-21 09:18:10.764 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-06-21 09:18:10.766 [main] INFO  JobContainer - Set jobId = 0
+2023-06-21 09:18:16.438 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;.
+2023-06-21 09:18:16.476 [job-0] INFO  OriginalConfPretreatmentUtil - table:[CIF_CUST_IDENTIF] has columns:[CUST_CODE,CUST_NAME,CUACCT_CODE,USER_NAME,USER_CODE,INT_ORG,OPEN_DATE,ID_CODE,ID_TYPE,ORG_FULL_NAME,MOBILE_TEL,USER_TYPE,FISL_CUACCT_CODE].
+2023-06-21 09:18:16.550 [job-0] INFO  OriginalConfPretreatmentUtil - table:[CIF_CUST_IDENTIF] all columns:[
+CUST_CODE,CUST_NAME,CUACCT_CODE,USER_NAME,USER_CODE,INT_ORG,OPEN_DATE,ID_CODE,ID_TYPE,ORG_FULL_NAME,MOBILE_TEL,USER_TYPE,FISL_CUACCT_CODE
+].
+2023-06-21 09:18:16.563 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (CUST_CODE,CUST_NAME,CUACCT_CODE,USER_NAME,USER_CODE,INT_ORG,OPEN_DATE,ID_CODE,ID_TYPE,ORG_FULL_NAME,MOBILE_TEL,USER_TYPE,FISL_CUACCT_CODE) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-06-21 09:18:16.563 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-06-21 09:18:16.563 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] do prepare work .
+2023-06-21 09:18:16.563 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-06-21 09:18:16.575 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE CIF_CUST_IDENTIF]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-06-21 09:18:16.576 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-06-21 09:18:16.576 [job-0] INFO  JobContainer - Job set Channel-Number to 10 channels.
+2023-06-21 09:18:16.578 [job-0] INFO  JobContainer - DataX Reader.Job [sqlserverreader] splits to [1] tasks.
+2023-06-21 09:18:16.579 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-06-21 09:18:16.592 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-06-21 09:18:16.595 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-06-21 09:18:16.596 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-06-21 09:18:16.600 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-06-21 09:18:16.603 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-06-21 09:18:16.603 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-06-21 09:18:16.611 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-06-21 09:18:16.614 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select CUST_CODE,CUST_NAME,CUACCT_CODE,USER_NAME,USER_CODE,INT_ORG,OPEN_DATE,ID_CODE,ID_TYPE,ORG_FULL_NAME,MOBILE_TEL,USER_TYPE,FISL_CUACCT_CODE from CIF_CUST_IDENTIF 
+] jdbcUrl:[jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;].
+2023-06-21 09:18:17.023 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (0, 106005676)。
+2023-06-21 09:18:17.029 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (0, 106005676)。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:291) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-06-21 09:18:17.033 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (0, 106005676)。","record":[{"byteSize":1,"index":0,"rawData":"0","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":9,"index":2,"rawData":"106005676","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":1,"index":4,"rawData":"0","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1006","type":"STRING"},{"byteSize":8,"index":6,"rawData":"20071228","type":"DOUBLE"},{"byteSize":1,"index":7,"rawData":"0","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1006营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.039 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (1, 1)。","record":[{"byteSize":1,"index":0,"rawData":"1","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":1,"index":2,"rawData":"1","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":1,"index":4,"rawData":"1","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1008","type":"STRING"},{"byteSize":8,"index":6,"rawData":"20040102","type":"DOUBLE"},{"byteSize":1,"index":7,"rawData":"1","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1008营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.052 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10, 10)。","record":[{"byteSize":2,"index":0,"rawData":"10","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":2,"index":2,"rawData":"10","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":2,"index":4,"rawData":"10","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1008","type":"STRING"},{"byteSize":8,"index":6,"rawData":"20040109","type":"DOUBLE"},{"byteSize":2,"index":7,"rawData":"10","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1008营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.061 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10010081, 10010081)。","record":[{"byteSize":8,"index":0,"rawData":"10010081","type":"STRING"},{"byteSize":4,"index":1,"rawData":"受理员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10010081","type":"STRING"},{"byteSize":4,"index":3,"rawData":"受理员工","type":"STRING"},{"byteSize":0,"index":4,"rawData":"","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"20200616","type":"DOUBLE"},{"byteSize":16,"index":7,"rawData":"1001008110010081","type":"STRING"},{"byteSize":2,"index":8,"rawData":"09","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":1,"index":10,"rawData":"0","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.062 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10012346, 10012346)。","record":[{"byteSize":8,"index":0,"rawData":"10012346","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10012346","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":4,"rawData":"10012346","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"19950418","type":"DOUBLE"},{"byteSize":8,"index":7,"rawData":"10012346","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.064 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10012347, 10012347)。","record":[{"byteSize":8,"index":0,"rawData":"10012347","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10012347","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":4,"rawData":"10012347","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"19950419","type":"DOUBLE"},{"byteSize":8,"index":7,"rawData":"10012347","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.067 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10012348, 10012348)。","record":[{"byteSize":8,"index":0,"rawData":"10012348","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10012348","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":4,"rawData":"10012348","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"19950502","type":"DOUBLE"},{"byteSize":8,"index":7,"rawData":"10012348","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.070 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10012349, 10012349)。","record":[{"byteSize":8,"index":0,"rawData":"10012349","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10012349","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":4,"rawData":"10012349","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"19950503","type":"DOUBLE"},{"byteSize":8,"index":7,"rawData":"10012349","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:17.071 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (10012350, 10012350)。","record":[{"byteSize":8,"index":0,"rawData":"10012350","type":"STRING"},{"byteSize":4,"index":1,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":2,"rawData":"10012350","type":"STRING"},{"byteSize":4,"index":3,"rawData":"金证员工","type":"STRING"},{"byteSize":8,"index":4,"rawData":"10012350","type":"STRING"},{"byteSize":4,"index":5,"rawData":"1001","type":"STRING"},{"byteSize":8,"index":6,"rawData":"19950503","type":"DOUBLE"},{"byteSize":8,"index":7,"rawData":"10012350","type":"STRING"},{"byteSize":2,"index":8,"rawData":"01","type":"STRING"},{"byteSize":11,"index":9,"rawData":"金证股份1001营业部","type":"STRING"},{"byteSize":11,"index":10,"rawData":"15242125632","type":"STRING"},{"byteSize":1,"index":11,"rawData":"0","type":"STRING"},{"byteSize":0,"index":12,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-06-21 09:18:23.857 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101001971, 101001971)。
+2023-06-21 09:18:26.612 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 0.00%
+2023-06-21 09:18:29.670 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101004188, 101004188)。
+2023-06-21 09:18:31.558 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101006358, 101006358)。
+2023-06-21 09:18:32.502 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101008431, 101008431)。
+2023-06-21 09:18:33.459 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101010547, 101010547)。
+2023-06-21 09:18:34.378 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101013083, 101013083)。
+2023-06-21 09:18:35.317 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101015821, 101015821)。
+2023-06-21 09:18:36.276 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:违反了 PRIMARY KEY 约束“PK_CIF_CUST_IDENTIF”。不能在对象“dbo.CIF_CUST_IDENTIF”中插入重复键。重复键值为 (101018511, 101018511)。
+2023-06-21 09:18:36.617 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4608 records, 372332 bytes | Speed 36.36KB/s, 460 records/s | Error 3013 records, 243137 bytes |  All Task WaitWriterTime 6.825s |  All Task WaitReaderTime 0.077s | Percentage 0.00%
+2023-06-21 09:18:36.618 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-06-21 09:18:36.618 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3013]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-06-21 09:18:36.619 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4608 records, 372332 bytes | Speed 363.61KB/s, 4608 records/s | Error 3013 records, 243137 bytes |  All Task WaitWriterTime 6.825s |  All Task WaitReaderTime 0.077s | Percentage 0.00%
+2023-06-21 09:18:36.620 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[3013]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

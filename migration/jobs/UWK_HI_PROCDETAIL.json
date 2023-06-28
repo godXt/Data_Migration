@@ -1,0 +1,78 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "channel": 20
+            },
+            "errorLimit": {
+                "record": 0
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "sqlserverreader",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "PROC_INST_ID",
+                            "ATTR_1",
+                            "ATTR_2",
+                            "ATTR_3",
+                            "ATTR_4",
+                            "ATTR_5",
+                            "ATTR_6",
+                            "ATTR_7",
+                            "ATTR_8",
+                            "ATTR_9",
+                            "ATTR_10"
+                        ],
+                        "splitPk": "",
+                        "connection": [
+                            {
+                                "table": [
+                                    "UWK_HI_PROCDETAIL"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:sqlserver://192.168.203.130:1433;DatabaseName=YGT;"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "sqlserverwriter",
+                    "parameter": {
+                        "username": "sa",
+                        "password": "x032013x@..",
+                        "column": [
+                            "PROC_INST_ID",
+                            "ATTR_1",
+                            "ATTR_2",
+                            "ATTR_3",
+                            "ATTR_4",
+                            "ATTR_5",
+                            "ATTR_6",
+                            "ATTR_7",
+                            "ATTR_8",
+                            "ATTR_9",
+                            "ATTR_10"
+                        ],
+                        "preSql": [
+                            "TRUNCATE TABLE UWK_HI_PROCDETAIL"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+                                "table": [
+                                    "UWK_HI_PROCDETAIL"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
