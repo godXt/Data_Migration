@@ -5,32 +5,33 @@ import os
 import pymysql
 
 # datax安装路径
-path_datax = os.path.abspath("../datax/bin/datax.py").replace("\\", "/")
+path_datax = os.path.join("../datax/bin/", "datax.py")
 num_processes = 4  # 最大进程数
-num_threads = 2  # 最大线程数
+num_threads = 4  # 最大线程数
 
 # 配置数据库类型,选择数据源和目标源数据库类型，可选数据库类型有: 'mysql', 'sqlserver', 'oracle', 'gaussdb'
-source_db_type = 'sqlserver'  # 数据源
+source_db_type = 'gaussdb'  # 数据源
 target_db_type = 'sqlserver'  # 目标源
 
 
-'''# 数据源数据库信息
+# 数据源数据库信息
 sourceip = '10.201.65.21'  # host
 sourceport = '30100'  # 端口
 sourcedb = 'ygt'  # datebase
 sourceuser = 'ygt'  # 用户名
 sourcepw = 'ygtqwe123!@#'  # 密码
-reader = 'postgresqlreader'  # 配置json中的数据源读取器名称：readername'''
+reader = 'postgresqlreader'  # 配置json中的数据源读取器名称：readername
+'''
 
 
-# 目标源数据库信息
+# 数据源数据库信息
 sourceip = '192.168.203.130'  # host
 sourceport = '1433'  # 端口
 sourcedb = 'YGT'  # datebase
 sourceuser = 'sa'  # 用户名
 sourcepw = 'x032013x@..'  # 密码
 reader = 'sqlserverreader'  # 配置json中的数据源读取器名称：readername
-
+'''
 # 目标源数据库信息
 targetip = '192.168.203.129'  # host
 targetport = '1433'  # 端口
@@ -117,3 +118,4 @@ target_database_type = db_config[target_db_type]['target_jdbcUrl']
 job_path = './jobs'
 log_path = './logs'
 migration_tables = './migration_tables.txt'  # 存放需要迁移的表（表必须是一列，也就是一行一个，不要加标点符号）
+

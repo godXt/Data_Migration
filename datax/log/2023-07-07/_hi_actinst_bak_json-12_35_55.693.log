@@ -1,0 +1,172 @@
+2023-07-07 12:35:55.851 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 12:35:55.853 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 12:35:55.861 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 12:35:55.865 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 12:35:55.878 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"hi_actinst_id",
+						"proc_def_id",
+						"proc_inst_id",
+						"execution_id",
+						"act_id",
+						"task_id",
+						"call_proc_inst_id",
+						"act_name",
+						"act_type",
+						"assignee",
+						"start_time",
+						"end_time",
+						"duration",
+						"create_time",
+						"next_act"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"uwk_hi_actinst_bak"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"HI_ACTINST_ID",
+						"PROC_DEF_ID",
+						"PROC_INST_ID",
+						"EXECUTION_ID",
+						"ACT_ID",
+						"TASK_ID",
+						"CALL_PROC_INST_ID",
+						"ACT_NAME",
+						"ACT_TYPE",
+						"ASSIGNEE",
+						"START_TIME",
+						"END_TIME",
+						"DURATION",
+						"CREATE_TIME",
+						"NEXT_ACT"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UWK_HI_ACTINST_BAK"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UWK_HI_ACTINST_BAK"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 12:35:55.891 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 12:35:55.892 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 12:35:55.892 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 12:35:55.894 [main] INFO  JobContainer - Set jobId = 0
+2023-07-07 12:36:01.956 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:postgresql://10.201.65.21:30100/ygt.
+2023-07-07 12:36:02.286 [job-0] INFO  OriginalConfPretreatmentUtil - table:[uwk_hi_actinst_bak] has columns:[hi_actinst_id,proc_def_id,proc_inst_id,execution_id,act_id,task_id,call_proc_inst_id,act_name,act_type,assignee,start_time,end_time,duration,create_time,next_act].
+2023-07-07 12:36:02.511 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UWK_HI_ACTINST_BAK] all columns:[
+HI_ACTINST_ID,PROC_DEF_ID,PROC_INST_ID,EXECUTION_ID,ACT_ID,TASK_ID,CALL_PROC_INST_ID,ACT_NAME,ACT_TYPE,ASSIGNEE,START_TIME,END_TIME,DURATION,CREATE_TIME,NEXT_ACT
+].
+2023-07-07 12:36:02.561 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (HI_ACTINST_ID,PROC_DEF_ID,PROC_INST_ID,EXECUTION_ID,ACT_ID,TASK_ID,CALL_PROC_INST_ID,ACT_NAME,ACT_TYPE,ASSIGNEE,START_TIME,END_TIME,DURATION,CREATE_TIME,NEXT_ACT) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-07-07 12:36:02.561 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-07-07 12:36:02.561 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do prepare work .
+2023-07-07 12:36:02.561 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-07-07 12:36:02.573 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UWK_HI_ACTINST_BAK]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-07-07 12:36:02.574 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-07-07 12:36:02.574 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-07-07 12:36:02.576 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] splits to [1] tasks.
+2023-07-07 12:36:02.576 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-07-07 12:36:02.589 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-07-07 12:36:02.592 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-07-07 12:36:02.593 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-07-07 12:36:02.598 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-07-07 12:36:02.601 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-07-07 12:36:02.601 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-07-07 12:36:02.608 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-07-07 12:36:02.612 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select hi_actinst_id,proc_def_id,proc_inst_id,execution_id,act_id,task_id,call_proc_inst_id,act_name,act_type,assignee,start_time,end_time,duration,create_time,next_act from uwk_hi_actinst_bak 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 12:36:02.873 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select hi_actinst_id,proc_def_id,proc_inst_id,execution_id,act_id,task_id,call_proc_inst_id,act_name,act_type,assignee,start_time,end_time,duration,create_time,next_act from uwk_hi_actinst_bak 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 12:36:03.166 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[558]ms
+2023-07-07 12:36:03.166 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-07-07 12:36:12.615 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 100.00%
+2023-07-07 12:36:12.615 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-07-07 12:36:12.615 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-07-07 12:36:12.615 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do post work.
+2023-07-07 12:36:12.615 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-07-07 12:36:12.616 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-07-07 12:36:12.617 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+
+2023-07-07 12:36:12.617 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-07-07 12:36:12.617 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 100.00%
+2023-07-07 12:36:12.618 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-07-07 12:35:55
+任务结束时刻                    : 2023-07-07 12:36:12
+任务总计耗时                    :                 16s
+任务平均流量                    :                0B/s
+记录写入速度                    :              0rec/s
+读出记录总数                    :                   0
+读写失败总数                    :                   0
+

@@ -1,0 +1,111 @@
+2023-07-07 12:12:57.367 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 12:12:57.369 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 12:12:57.375 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 12:12:57.379 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 12:12:57.390 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"variable_id",
+						"rev",
+						"vtype",
+						"vname",
+						"bytearray_id",
+						"task_id",
+						"execution_id",
+						"proc_inst_id",
+						"doubletype",
+						"longtype",
+						"texttype",
+						"text2type",
+						"create_time"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"uwk_ru_variable"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"VARIABLE_ID",
+						"REV",
+						"VTYPE",
+						"VNAME",
+						"BYTEARRAY_ID",
+						"TASK_ID",
+						"EXECUTION_ID",
+						"PROC_INST_ID",
+						"DOUBLETYPE",
+						"LONGTYPE",
+						"TEXTTYPE",
+						"TEXT2TYPE",
+						"CREATE_TIME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UWK_RU_VARIABLE"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UWK_RU_VARIABLE"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 12:12:57.400 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 12:12:57.401 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 12:12:57.401 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 12:12:57.403 [main] INFO  JobContainer - Set jobId = 0

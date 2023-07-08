@@ -1,0 +1,185 @@
+2023-07-07 11:36:54.165 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 11:36:54.167 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 11:36:54.174 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 11:36:54.178 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 11:36:54.192 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"group_id",
+						"group_name",
+						"arch_flag",
+						"arch_cycle",
+						"subsys",
+						"retain_duration",
+						"last_arch_date",
+						"is_related",
+						"remark"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"upm_arch_group"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"GROUP_ID",
+						"GROUP_NAME",
+						"ARCH_FLAG",
+						"ARCH_CYCLE",
+						"RETAIN_DURATION",
+						"LAST_ARCH_DATE",
+						"IS_RELATED",
+						"REMARK",
+						"SUBSYS"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_ARCH_GROUP"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_ARCH_GROUP"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 11:36:54.203 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 11:36:54.204 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 11:36:54.204 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 11:36:54.206 [main] INFO  JobContainer - Set jobId = 0
+2023-07-07 11:37:02.326 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:postgresql://10.201.65.21:30100/ygt.
+2023-07-07 11:37:06.371 [job-0] INFO  OriginalConfPretreatmentUtil - table:[upm_arch_group] has columns:[group_id,group_name,arch_flag,arch_cycle,subsys,retain_duration,last_arch_date,is_related,remark].
+2023-07-07 11:37:06.511 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_ARCH_GROUP] all columns:[
+GROUP_ID,GROUP_NAME,ARCH_FLAG,ARCH_CYCLE,RETAIN_DURATION,LAST_ARCH_DATE,IS_RELATED,REMARK,SUBSYS
+].
+2023-07-07 11:37:06.524 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (GROUP_ID,GROUP_NAME,ARCH_FLAG,ARCH_CYCLE,RETAIN_DURATION,LAST_ARCH_DATE,IS_RELATED,REMARK,SUBSYS) VALUES(?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-07-07 11:37:06.525 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-07-07 11:37:06.525 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do prepare work .
+2023-07-07 11:37:06.525 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-07-07 11:37:06.535 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_ARCH_GROUP]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-07-07 11:37:06.536 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-07-07 11:37:06.538 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-07-07 11:37:06.539 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] splits to [1] tasks.
+2023-07-07 11:37:06.540 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-07-07 11:37:06.554 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-07-07 11:37:06.557 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-07-07 11:37:06.558 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-07-07 11:37:06.562 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-07-07 11:37:06.564 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-07-07 11:37:06.564 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-07-07 11:37:06.574 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-07-07 11:37:06.577 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select group_id,group_name,arch_flag,arch_cycle,subsys,retain_duration,last_arch_date,is_related,remark from upm_arch_group 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:37:10.808 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select group_id,group_name,arch_flag,arch_cycle,subsys,retain_duration,last_arch_date,is_related,remark from upm_arch_group 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:37:11.031 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:将截断字符串或二进制数据。
+2023-07-07 11:37:11.035 [0-0-0-writer] ERROR StdoutPluginCollector - 
+com.microsoft.sqlserver.jdbc.SQLServerException: 将截断字符串或二进制数据。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:216) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1515) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:404) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:350) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:5696) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:1715) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:180) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:155) ~[sqljdbc4-4.0.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:332) ~[sqljdbc4-4.0.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:382) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:297) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-07-07 11:37:11.037 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"将截断字符串或二进制数据。","record":[{"byteSize":1,"index":0,"rawData":1,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"日志组","type":"STRING"},{"byteSize":1,"index":2,"rawData":"1","type":"STRING"},{"byteSize":0,"index":3,"type":"LONG"},{"byteSize":2,"index":4,"rawData":"99","type":"STRING"},{"byteSize":2,"index":5,"rawData":12,"type":"LONG"},{"byteSize":8,"index":6,"rawData":"20230309","type":"STRING"},{"byteSize":1,"index":7,"rawData":"0","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-07-07 11:37:11.038 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"将截断字符串或二进制数据。","record":[{"byteSize":1,"index":0,"rawData":2,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"业务组","type":"STRING"},{"byteSize":1,"index":2,"rawData":"1","type":"STRING"},{"byteSize":0,"index":3,"type":"LONG"},{"byteSize":2,"index":4,"rawData":"99","type":"STRING"},{"byteSize":2,"index":5,"rawData":12,"type":"LONG"},{"byteSize":8,"index":6,"rawData":"20230309","type":"STRING"},{"byteSize":1,"index":7,"rawData":"1","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-07-07 11:37:11.039 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"将截断字符串或二进制数据。","record":[{"byteSize":1,"index":0,"rawData":3,"type":"LONG"},{"byteSize":5,"index":1,"rawData":"参数管理组","type":"STRING"},{"byteSize":1,"index":2,"rawData":"1","type":"STRING"},{"byteSize":0,"index":3,"type":"LONG"},{"byteSize":2,"index":4,"rawData":"99","type":"STRING"},{"byteSize":1,"index":5,"rawData":0,"type":"LONG"},{"byteSize":8,"index":6,"rawData":"20230309","type":"STRING"},{"byteSize":1,"index":7,"rawData":"0","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-07-07 11:37:11.040 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"将截断字符串或二进制数据。","record":[{"byteSize":1,"index":0,"rawData":4,"type":"LONG"},{"byteSize":3,"index":1,"rawData":"权限组","type":"STRING"},{"byteSize":1,"index":2,"rawData":"1","type":"STRING"},{"byteSize":0,"index":3,"type":"LONG"},{"byteSize":2,"index":4,"rawData":"99","type":"STRING"},{"byteSize":1,"index":5,"rawData":0,"type":"LONG"},{"byteSize":8,"index":6,"rawData":"20230309","type":"STRING"},{"byteSize":1,"index":7,"rawData":"0","type":"STRING"},{"byteSize":0,"index":8,"rawData":"","type":"STRING"}],"type":"writer"}
+2023-07-07 11:37:11.143 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[4571]ms
+2023-07-07 11:37:11.143 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-07-07 11:37:16.584 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4 records, 72 bytes | Speed 7B/s, 0 records/s | Error 4 records, 72 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 4.216s | Percentage 100.00%
+2023-07-07 11:37:16.585 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-07-07 11:37:16.585 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[4]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-07-07 11:37:16.586 [job-0] INFO  StandAloneJobContainerCommunicator - Total 4 records, 72 bytes | Speed 72B/s, 4 records/s | Error 4 records, 72 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 4.216s | Percentage 100.00%
+2023-07-07 11:37:16.586 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[4]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+

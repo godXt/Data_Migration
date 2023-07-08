@@ -1,0 +1,194 @@
+2023-07-07 11:36:30.598 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 11:36:30.600 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 11:36:30.607 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 11:36:30.610 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 11:36:30.628 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"serial_no",
+						"occur_time",
+						"occur_date",
+						"op_code",
+						"channel",
+						"bus_code",
+						"bus_name",
+						"data_op_type",
+						"old_data",
+						"new_data",
+						"data_op_status",
+						"error_message",
+						"error_code",
+						"sys_code",
+						"sys_serial_no",
+						"sys_user_code",
+						"op_site",
+						"f_yzt_channel",
+						"remark",
+						"exec_times",
+						"menu_id",
+						"menu_name"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"upm_opt_log"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"SERIAL_NO",
+						"OCCUR_TIME",
+						"OCCUR_DATE",
+						"OP_CODE",
+						"CHANNEL",
+						"BUS_CODE",
+						"BUS_NAME",
+						"DATA_OP_TYPE",
+						"OLD_DATA",
+						"NEW_DATA",
+						"DATA_OP_STATUS",
+						"ERROR_MESSAGE",
+						"ERROR_CODE",
+						"SYS_CODE",
+						"SYS_SERIAL_NO",
+						"SYS_USER_CODE",
+						"OP_SITE",
+						"F_YZT_CHANNEL",
+						"REMARK",
+						"EXEC_TIMES",
+						"MENU_ID",
+						"MENU_NAME"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_OPT_LOG"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_OPT_LOG"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 11:36:30.641 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 11:36:30.642 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 11:36:30.642 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 11:36:30.644 [main] INFO  JobContainer - Set jobId = 0
+2023-07-07 11:36:36.613 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:postgresql://10.201.65.21:30100/ygt.
+2023-07-07 11:36:36.940 [job-0] INFO  OriginalConfPretreatmentUtil - table:[upm_opt_log] has columns:[serial_no,occur_time,occur_date,op_code,channel,bus_code,bus_name,data_op_type,old_data,new_data,data_op_status,error_message,error_code,sys_code,sys_serial_no,sys_user_code,op_site,f_yzt_channel,remark,exec_times,menu_id,menu_name].
+2023-07-07 11:36:37.109 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_OPT_LOG] all columns:[
+SERIAL_NO,OCCUR_TIME,OCCUR_DATE,OP_CODE,CHANNEL,BUS_CODE,BUS_NAME,DATA_OP_TYPE,OLD_DATA,NEW_DATA,DATA_OP_STATUS,ERROR_MESSAGE,ERROR_CODE,SYS_CODE,SYS_SERIAL_NO,SYS_USER_CODE,OP_SITE,F_YZT_CHANNEL,REMARK,EXEC_TIMES,MENU_ID,MENU_NAME
+].
+2023-07-07 11:36:37.124 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (SERIAL_NO,OCCUR_TIME,OCCUR_DATE,OP_CODE,CHANNEL,BUS_CODE,BUS_NAME,DATA_OP_TYPE,OLD_DATA,NEW_DATA,DATA_OP_STATUS,ERROR_MESSAGE,ERROR_CODE,SYS_CODE,SYS_SERIAL_NO,SYS_USER_CODE,OP_SITE,F_YZT_CHANNEL,REMARK,EXEC_TIMES,MENU_ID,MENU_NAME) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-07-07 11:36:37.125 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-07-07 11:36:37.125 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do prepare work .
+2023-07-07 11:36:37.126 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-07-07 11:36:37.139 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_OPT_LOG]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-07-07 11:36:37.144 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-07-07 11:36:37.144 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-07-07 11:36:37.147 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] splits to [1] tasks.
+2023-07-07 11:36:37.147 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-07-07 11:36:37.162 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-07-07 11:36:37.165 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-07-07 11:36:37.167 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-07-07 11:36:37.172 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-07-07 11:36:37.176 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-07-07 11:36:37.176 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-07-07 11:36:37.185 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-07-07 11:36:37.189 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select serial_no,occur_time,occur_date,op_code,channel,bus_code,bus_name,data_op_type,old_data,new_data,data_op_status,error_message,error_code,sys_code,sys_serial_no,sys_user_code,op_site,f_yzt_channel,remark,exec_times,menu_id,menu_name from upm_opt_log 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:36:47.192 [job-0] INFO  StandAloneJobContainerCommunicator - Total 0 records, 0 bytes | Speed 0B/s, 0 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.000s |  All Task WaitReaderTime 0.000s | Percentage 0.00%
+2023-07-07 11:36:57.198 [job-0] INFO  StandAloneJobContainerCommunicator - Total 11968 records, 12081495 bytes | Speed 1.15MB/s, 1196 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 1.116s |  All Task WaitReaderTime 7.985s | Percentage 0.00%
+2023-07-07 11:37:07.203 [job-0] INFO  StandAloneJobContainerCommunicator - Total 23968 records, 27285150 bytes | Speed 1.45MB/s, 1200 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 1.852s |  All Task WaitReaderTime 16.650s | Percentage 0.00%
+2023-07-07 11:37:17.218 [job-0] INFO  StandAloneJobContainerCommunicator - Total 37984 records, 43226652 bytes | Speed 1.52MB/s, 1401 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 1.853s |  All Task WaitReaderTime 25.162s | Percentage 0.00%
+2023-07-07 11:37:27.228 [job-0] INFO  StandAloneJobContainerCommunicator - Total 53984 records, 56963146 bytes | Speed 1.31MB/s, 1600 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 2.657s |  All Task WaitReaderTime 34.479s | Percentage 0.00%
+2023-07-07 11:37:37.235 [job-0] INFO  StandAloneJobContainerCommunicator - Total 64992 records, 68565130 bytes | Speed 1.11MB/s, 1100 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 3.293s |  All Task WaitReaderTime 43.633s | Percentage 0.00%
+2023-07-07 11:37:47.244 [job-0] INFO  StandAloneJobContainerCommunicator - Total 72992 records, 83027357 bytes | Speed 1.38MB/s, 800 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 3.293s |  All Task WaitReaderTime 53.213s | Percentage 0.00%
+2023-07-07 11:37:57.251 [job-0] INFO  StandAloneJobContainerCommunicator - Total 82976 records, 95368955 bytes | Speed 1.18MB/s, 998 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 3.293s |  All Task WaitReaderTime 62.101s | Percentage 0.00%
+2023-07-07 11:38:03.274 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select serial_no,occur_time,occur_date,op_code,channel,bus_code,bus_name,data_op_type,old_data,new_data,data_op_status,error_message,error_code,sys_code,sys_serial_no,sys_user_code,op_site,f_yzt_channel,remark,exec_times,menu_id,menu_name from upm_opt_log 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:38:03.436 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[86252]ms
+2023-07-07 11:38:03.436 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-07-07 11:38:07.256 [job-0] INFO  StandAloneJobContainerCommunicator - Total 98336 records, 112684408 bytes | Speed 1.65MB/s, 1536 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 4.231s |  All Task WaitReaderTime 77.232s | Percentage 100.00%
+2023-07-07 11:38:07.256 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-07-07 11:38:07.257 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-07-07 11:38:07.257 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do post work.
+2023-07-07 11:38:07.257 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-07-07 11:38:07.258 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-07-07 11:38:07.258 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 7                  | 7                  | 7                  | 0.067s             | 0.067s             | 0.067s             
+
+2023-07-07 11:38:07.259 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-07-07 11:38:07.259 [job-0] INFO  StandAloneJobContainerCommunicator - Total 98336 records, 112684408 bytes | Speed 1.19MB/s, 1092 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 4.231s |  All Task WaitReaderTime 77.232s | Percentage 100.00%
+2023-07-07 11:38:07.259 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-07-07 11:36:30
+任务结束时刻                    : 2023-07-07 11:38:07
+任务总计耗时                    :                 96s
+任务平均流量                    :            1.19MB/s
+记录写入速度                    :           1092rec/s
+读出记录总数                    :               98336
+读写失败总数                    :                   0
+

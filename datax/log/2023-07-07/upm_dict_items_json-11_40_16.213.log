@@ -1,0 +1,152 @@
+2023-07-07 11:40:16.355 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 11:40:16.357 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 11:40:16.365 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 11:40:16.369 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 11:40:16.382 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"dict_code",
+						"dict_item",
+						"dict_item_name",
+						"dict_ord",
+						"org_code"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"upm_dict_items"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"DICT_CODE",
+						"DICT_ITEM",
+						"DICT_ITEM_NAME",
+						"DICT_ORD",
+						"ORG_CODE"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"UPM_DICT_ITEMS"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE UPM_DICT_ITEMS"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 11:40:16.393 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 11:40:16.394 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 11:40:16.395 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 11:40:16.396 [main] INFO  JobContainer - Set jobId = 0
+2023-07-07 11:40:22.239 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:postgresql://10.201.65.21:30100/ygt.
+2023-07-07 11:40:22.464 [job-0] INFO  OriginalConfPretreatmentUtil - table:[upm_dict_items] has columns:[dict_code,dict_item,dict_item_name,dict_ord,org_code].
+2023-07-07 11:40:22.609 [job-0] INFO  OriginalConfPretreatmentUtil - table:[UPM_DICT_ITEMS] all columns:[
+DICT_CODE,DICT_ITEM,DICT_ITEM_NAME,DICT_ORD,ORG_CODE
+].
+2023-07-07 11:40:22.624 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (DICT_CODE,DICT_ITEM,DICT_ITEM_NAME,DICT_ORD,ORG_CODE) VALUES(?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-07-07 11:40:22.624 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-07-07 11:40:22.624 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do prepare work .
+2023-07-07 11:40:22.625 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-07-07 11:40:22.636 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE UPM_DICT_ITEMS]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-07-07 11:40:22.638 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-07-07 11:40:22.638 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-07-07 11:40:22.640 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] splits to [1] tasks.
+2023-07-07 11:40:22.640 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-07-07 11:40:22.653 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-07-07 11:40:22.656 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-07-07 11:40:22.657 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-07-07 11:40:22.661 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-07-07 11:40:22.665 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-07-07 11:40:22.665 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-07-07 11:40:22.672 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-07-07 11:40:22.675 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select dict_code,dict_item,dict_item_name,dict_ord,org_code from upm_dict_items 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:40:25.326 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select dict_code,dict_item,dict_item_name,dict_ord,org_code from upm_dict_items 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 11:40:25.569 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[2898]ms
+2023-07-07 11:40:25.569 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-07-07 11:40:32.680 [job-0] INFO  StandAloneJobContainerCommunicator - Total 39120 records, 892728 bytes | Speed 87.18KB/s, 3912 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.232s |  All Task WaitReaderTime 2.173s | Percentage 100.00%
+2023-07-07 11:40:32.680 [job-0] INFO  AbstractScheduler - Scheduler accomplished all tasks.
+2023-07-07 11:40:32.680 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do post work.
+2023-07-07 11:40:32.680 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do post work.
+2023-07-07 11:40:32.680 [job-0] INFO  JobContainer - DataX jobId [0] completed successfully.
+2023-07-07 11:40:32.681 [job-0] INFO  HookInvoker - No hook invoked, because base dir not exists or is a file: C:\Users\xT\PycharmProjects\Migration\datax\hook
+2023-07-07 11:40:32.682 [job-0] INFO  JobContainer - 
+	 [total cpu info] => 
+		averageCpu                     | maxDeltaCpu                    | minDeltaCpu                    
+		-1.00%                         | -1.00%                         | -1.00%
+                        
+
+	 [total gc info] => 
+		 NAME                 | totalGCCount       | maxDeltaGCCount    | minDeltaGCCount    | totalGCTime        | maxDeltaGCTime     | minDeltaGCTime     
+		 PS MarkSweep         | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+		 PS Scavenge          | 0                  | 0                  | 0                  | 0.000s             | 0.000s             | 0.000s             
+
+2023-07-07 11:40:32.682 [job-0] INFO  JobContainer - PerfTrace not enable!
+2023-07-07 11:40:32.682 [job-0] INFO  StandAloneJobContainerCommunicator - Total 39120 records, 892728 bytes | Speed 87.18KB/s, 3912 records/s | Error 0 records, 0 bytes |  All Task WaitWriterTime 0.232s |  All Task WaitReaderTime 2.173s | Percentage 100.00%
+2023-07-07 11:40:32.682 [job-0] INFO  JobContainer - 
+任务启动时刻                    : 2023-07-07 11:40:16
+任务结束时刻                    : 2023-07-07 11:40:32
+任务总计耗时                    :                 16s
+任务平均流量                    :           87.18KB/s
+记录写入速度                    :           3912rec/s
+读出记录总数                    :               39120
+读写失败总数                    :                   0
+

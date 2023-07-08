@@ -1,0 +1,190 @@
+2023-07-07 12:34:31.432 [main] INFO  MessageSource - JVM TimeZone: GMT+08:00, Locale: zh_CN
+2023-07-07 12:34:31.434 [main] INFO  MessageSource - use Locale: zh_CN timeZone: sun.util.calendar.ZoneInfo[id="GMT+08:00",offset=28800000,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+2023-07-07 12:34:31.446 [main] INFO  VMInfo - VMInfo# operatingSystem class => sun.management.OperatingSystemImpl
+2023-07-07 12:34:31.451 [main] INFO  Engine - the machine info  => 
+
+	osInfo:	Oracle Corporation 1.8 25.192-b12
+	jvmInfo:	Windows 10 amd64 10.0
+	cpu num:	16
+
+	totalPhysicalMemory:	-0.00G
+	freePhysicalMemory:	-0.00G
+	maxFileDescriptorCount:	-1
+	currentOpenFileDescriptorCount:	-1
+
+	GC Names	[PS MarkSweep, PS Scavenge]
+
+	MEMORY_NAME                    | allocation_size                | init_size                      
+	PS Eden Space                  | 256.00MB                       | 256.00MB                       
+	Code Cache                     | 240.00MB                       | 2.44MB                         
+	Compressed Class Space         | 1,024.00MB                     | 0.00MB                         
+	PS Survivor Space              | 42.50MB                        | 42.50MB                        
+	PS Old Gen                     | 683.00MB                       | 683.00MB                       
+	Metaspace                      | -0.00MB                        | 0.00MB                         
+
+
+2023-07-07 12:34:31.473 [main] INFO  Engine - 
+{
+	"content":[
+		{
+			"reader":{
+				"name":"postgresqlreader",
+				"parameter":{
+					"column":[
+						"serial_no",
+						"msg_sno",
+						"msg_type",
+						"op_code",
+						"msg_title",
+						"remark",
+						"oper_time",
+						"proc_status",
+						"cust_name",
+						"id_code"
+					],
+					"connection":[
+						{
+							"jdbcUrl":[
+								"jdbc:postgresql://10.201.65.21:30100/ygt"
+							],
+							"table":[
+								"opp_msg_push"
+							]
+						}
+					],
+					"password":"************",
+					"splitPk":"",
+					"username":"ygt"
+				}
+			},
+			"writer":{
+				"name":"sqlserverwriter",
+				"parameter":{
+					"column":[
+						"SERIAL_NO",
+						"MSG_SNO",
+						"MSG_TYPE",
+						"OP_CODE",
+						"MSG_TITLE",
+						"PROC_STATUS",
+						"CUST_NAME",
+						"ID_CODE",
+						"OPER_TIME",
+						"REMARK"
+					],
+					"connection":[
+						{
+							"jdbcUrl":"jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;",
+							"table":[
+								"OPP_MSG_PUSH"
+							]
+						}
+					],
+					"password":"***********",
+					"preSql":[
+						"TRUNCATE TABLE OPP_MSG_PUSH"
+					],
+					"username":"sa"
+				}
+			}
+		}
+	],
+	"setting":{
+		"errorLimit":{
+			"record":0
+		},
+		"speed":{
+			"channel":20
+		}
+	}
+}
+
+2023-07-07 12:34:31.490 [main] WARN  Engine - prioriy set to 0, because NumberFormatException, the value is: null
+2023-07-07 12:34:31.492 [main] INFO  PerfTrace - PerfTrace traceId=job_-1, isEnable=false, priority=0
+2023-07-07 12:34:31.492 [main] INFO  JobContainer - DataX jobContainer starts job.
+2023-07-07 12:34:31.496 [main] INFO  JobContainer - Set jobId = 0
+2023-07-07 12:34:38.625 [job-0] INFO  OriginalConfPretreatmentUtil - Available jdbcUrl:jdbc:postgresql://10.201.65.21:30100/ygt.
+2023-07-07 12:34:42.030 [job-0] INFO  OriginalConfPretreatmentUtil - table:[opp_msg_push] has columns:[serial_no,msg_sno,msg_type,op_code,msg_title,remark,oper_time,proc_status,cust_name,id_code].
+2023-07-07 12:34:42.189 [job-0] INFO  OriginalConfPretreatmentUtil - table:[OPP_MSG_PUSH] all columns:[
+SERIAL_NO,MSG_SNO,MSG_TYPE,OP_CODE,MSG_TITLE,PROC_STATUS,CUST_NAME,ID_CODE,OPER_TIME,REMARK
+].
+2023-07-07 12:34:42.199 [job-0] INFO  OriginalConfPretreatmentUtil - Write data [
+INSERT INTO %s (SERIAL_NO,MSG_SNO,MSG_TYPE,OP_CODE,MSG_TITLE,PROC_STATUS,CUST_NAME,ID_CODE,OPER_TIME,REMARK) VALUES(?,?,?,?,?,?,?,?,?,?)
+], which jdbcUrl like:[jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;]
+2023-07-07 12:34:42.199 [job-0] INFO  JobContainer - jobContainer starts to do prepare ...
+2023-07-07 12:34:42.200 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] do prepare work .
+2023-07-07 12:34:42.200 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] do prepare work .
+2023-07-07 12:34:42.209 [job-0] INFO  CommonRdbmsWriter$Job - Begin to execute preSqls:[TRUNCATE TABLE OPP_MSG_PUSH]. context info:jdbc:sqlserver://192.168.203.129:1433;DatabaseName=YGT;.
+2023-07-07 12:34:42.210 [job-0] INFO  JobContainer - jobContainer starts to do split ...
+2023-07-07 12:34:42.210 [job-0] INFO  JobContainer - Job set Channel-Number to 20 channels.
+2023-07-07 12:34:42.212 [job-0] INFO  JobContainer - DataX Reader.Job [postgresqlreader] splits to [1] tasks.
+2023-07-07 12:34:42.212 [job-0] INFO  JobContainer - DataX Writer.Job [sqlserverwriter] splits to [1] tasks.
+2023-07-07 12:34:42.223 [job-0] INFO  JobContainer - jobContainer starts to do schedule ...
+2023-07-07 12:34:42.226 [job-0] INFO  JobContainer - Scheduler starts [1] taskGroups.
+2023-07-07 12:34:42.227 [job-0] INFO  JobContainer - Running by standalone Mode.
+2023-07-07 12:34:42.231 [taskGroup-0] INFO  TaskGroupContainer - taskGroupId=[0] start [1] channels for [1] tasks.
+2023-07-07 12:34:42.233 [taskGroup-0] INFO  Channel - Channel set byte_speed_limit to -1, No bps activated.
+2023-07-07 12:34:42.233 [taskGroup-0] INFO  Channel - Channel set record_speed_limit to -1, No tps activated.
+2023-07-07 12:34:42.239 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] attemptCount[1] is started
+2023-07-07 12:34:42.242 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Begin to read record by Sql: [select serial_no,msg_sno,msg_type,op_code,msg_title,remark,oper_time,proc_status,cust_name,id_code from opp_msg_push 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 12:34:47.007 [0-0-0-reader] INFO  CommonRdbmsReader$Task - Finished read record by Sql: [select serial_no,msg_sno,msg_type,op_code,msg_title,remark,oper_time,proc_status,cust_name,id_code from opp_msg_push 
+] jdbcUrl:[jdbc:postgresql://10.201.65.21:30100/ygt].
+2023-07-07 12:34:47.256 [0-0-0-writer] WARN  CommonRdbmsWriter$Task - 回滚此次写入, 采用每次写入一行方式提交. 因为:TIMESTAMP 类型转换错误：[{"byteSize":3,"rawData":"张晓峰","type":"STRING"}]
+2023-07-07 12:34:47.260 [0-0-0-writer] ERROR StdoutPluginCollector - 
+java.sql.SQLException: TIMESTAMP 类型转换错误：[{"byteSize":3,"rawData":"张晓峰","type":"STRING"}]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.fillPreparedStatementColumnType(CommonRdbmsWriter.java:502) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.fillPreparedStatement(CommonRdbmsWriter.java:406) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doOneInsert(CommonRdbmsWriter.java:380) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.doBatchInsert(CommonRdbmsWriter.java:362) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWriteWithConnection(CommonRdbmsWriter.java:297) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.rdbms.writer.CommonRdbmsWriter$Task.startWrite(CommonRdbmsWriter.java:319) [plugin-rdbms-util-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.plugin.writer.sqlserverwriter.SqlServerWriter$Task.startWrite(SqlServerWriter.java:81) [sqlserverwriter-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.taskgroup.runner.WriterRunner.run(WriterRunner.java:56) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_192]
+2023-07-07 12:34:47.262 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"张晓峰\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1764","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000067","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"67403","type":"STRING"},{"byteSize":10,"index":4,"rawData":"双录-专业投资者开通","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534385403807,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"张晓峰","type":"STRING"},{"byteSize":18,"index":9,"rawData":"410323199102080610","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.263 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"张晓峰\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1765","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000062","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"67403","type":"STRING"},{"byteSize":7,"index":4,"rawData":"专业投资者开通","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534385416320,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"张晓峰","type":"STRING"},{"byteSize":18,"index":9,"rawData":"410323199102080610","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.263 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"陈俊茹\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1772","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000071","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"67403","type":"STRING"},{"byteSize":4,"index":4,"rawData":"影像补采","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534385603897,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"陈俊茹","type":"STRING"},{"byteSize":18,"index":9,"rawData":"41152819940320414X","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.264 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"陈俊茹\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1817","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000082","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"67403","type":"STRING"},{"byteSize":11,"index":4,"rawData":"债券合格投资者权限开通","type":"STRING"},{"byteSize":50,"index":5,"rawData":"沪市首日指定开通需要T+1执行! 需T+N日办理!,下一处理时间：20180817 09:14:00","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534468429333,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"22","type":"STRING"},{"byteSize":3,"index":8,"rawData":"陈俊茹","type":"STRING"},{"byteSize":18,"index":9,"rawData":"41152819940320414X","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.264 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"陈俊茹\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1830","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000126","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"67403","type":"STRING"},{"byteSize":7,"index":4,"rawData":"港股通协议开通","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534387397520,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"陈俊茹","type":"STRING"},{"byteSize":18,"index":9,"rawData":"41152819940320414X","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.264 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"黄小波\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"1925","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018072500000527","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"63601","type":"STRING"},{"byteSize":6,"index":4,"rawData":"客户风险测评","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534390355350,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"黄小波","type":"STRING"},{"byteSize":18,"index":9,"rawData":"350322198706154812","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.265 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"大脚怪\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"2033","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000340","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"63601","type":"STRING"},{"byteSize":9,"index":4,"rawData":"双录-经纪业务开户","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534398229720,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"大脚怪","type":"STRING"},{"byteSize":18,"index":9,"rawData":"450304198411151420","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.265 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":3,\"rawData\":\"大脚怪\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"2034","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081600000247","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"63601","type":"STRING"},{"byteSize":6,"index":4,"rawData":"经纪业务开户","type":"STRING"},{"byteSize":8,"index":5,"rawData":"任务自动执行成功","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534398264600,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"13","type":"STRING"},{"byteSize":3,"index":8,"rawData":"大脚怪","type":"STRING"},{"byteSize":18,"index":9,"rawData":"450304198411151420","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.265 [0-0-0-writer] ERROR StdoutPluginCollector - 脏数据: 
+{"exception":"TIMESTAMP 类型转换错误：[{\"byteSize\":8,\"rawData\":\"秦皇岛华婴阳光孕\",\"type\":\"STRING\"}]","record":[{"byteSize":4,"index":0,"rawData":"2207","type":"DOUBLE"},{"byteSize":16,"index":1,"rawData":"2018081500000618","type":"STRING"},{"byteSize":1,"index":2,"rawData":"0","type":"STRING"},{"byteSize":5,"index":3,"rawData":"58806","type":"STRING"},{"byteSize":15,"index":4,"rawData":"两网及退市公司股份转让权限开通","type":"STRING"},{"byteSize":3,"index":5,"rawData":"123","type":"STRING"},{"byteSize":8,"index":6,"rawData":1534402822013,"type":"DATE"},{"byteSize":2,"index":7,"rawData":"15","type":"STRING"},{"byteSize":8,"index":8,"rawData":"秦皇岛华婴阳光孕","type":"STRING"},{"byteSize":18,"index":9,"rawData":"91130300784082496X","type":"STRING"}],"type":"writer"}
+2023-07-07 12:34:47.348 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] taskId[0] is successed, used[5109]ms
+2023-07-07 12:34:47.348 [taskGroup-0] INFO  TaskGroupContainer - taskGroup[0] completed it's tasks.
+2023-07-07 12:34:52.249 [job-0] INFO  StandAloneJobContainerCommunicator - Total 270 records, 21382 bytes | Speed 2.09KB/s, 27 records/s | Error 269 records, 21358 bytes |  All Task WaitWriterTime 0.001s |  All Task WaitReaderTime 4.749s | Percentage 100.00%
+2023-07-07 12:34:52.250 [job-0] ERROR JobContainer - 运行scheduler 模式[standalone]出错.
+2023-07-07 12:34:52.250 [job-0] ERROR JobContainer - Exception when job run
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[269]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30) ~[datax-common-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119) ~[datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.start(Engine.java:93) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175) [datax-core-0.0.1-SNAPSHOT.jar:na]
+	at com.alibaba.datax.core.Engine.main(Engine.java:208) [datax-core-0.0.1-SNAPSHOT.jar:na]
+2023-07-07 12:34:52.251 [job-0] INFO  StandAloneJobContainerCommunicator - Total 270 records, 21382 bytes | Speed 20.88KB/s, 270 records/s | Error 269 records, 21358 bytes |  All Task WaitWriterTime 0.001s |  All Task WaitReaderTime 4.749s | Percentage 100.00%
+2023-07-07 12:34:52.251 [job-0] ERROR Engine - 
+
+经DataX智能分析,该任务最可能的错误原因是:
+com.alibaba.datax.common.exception.DataXException: Code:[Framework-14], Description:[DataX传输脏数据超过用户预期，该错误通常是由于源端数据存在较多业务脏数据导致，请仔细检查DataX汇报的脏数据日志信息, 或者您可以适当调大脏数据阈值 .].  - 脏数据条数检查不通过，限制是[0]条，但实际上捕获了[269]条.
+	at com.alibaba.datax.common.exception.DataXException.asDataXException(DataXException.java:30)
+	at com.alibaba.datax.core.util.ErrorRecordChecker.checkRecordLimit(ErrorRecordChecker.java:58)
+	at com.alibaba.datax.core.job.scheduler.AbstractScheduler.schedule(AbstractScheduler.java:89)
+	at com.alibaba.datax.core.job.JobContainer.schedule(JobContainer.java:535)
+	at com.alibaba.datax.core.job.JobContainer.start(JobContainer.java:119)
+	at com.alibaba.datax.core.Engine.start(Engine.java:93)
+	at com.alibaba.datax.core.Engine.entry(Engine.java:175)
+	at com.alibaba.datax.core.Engine.main(Engine.java:208)
+
