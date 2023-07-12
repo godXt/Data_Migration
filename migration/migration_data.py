@@ -9,8 +9,8 @@ import subprocess
 import threading
 import time
 from concurrent.futures import as_completed
-
-import cx_Oracle
+import pyodbc
+#import cx_Oracle
 import psycopg2
 import pymssql
 from tqdm import tqdm
@@ -58,12 +58,13 @@ def get_connection_and_cursor(database_type, db_config):
             return conn, cursor
         elif database_type == db_config['sqlserver']['source_jdbcUrl'] \
                 or database_type == db_config['sqlserver']['target_jdbcUrl']:
-            conn = pymssql.connect(server=db_config['sqlserver']['host'],
-                                   port=db_config['sqlserver']['port'],
-                                   user=db_config['sqlserver']['user'],
-                                   password=db_config['sqlserver']['password'],
-                                   database=db_config['sqlserver']['database']
-                                   )
+            conn = pyodbc.connect(f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+                                  f'SERVER={db_config["sqlserver"]["host"]};'
+                                  f'PORT={db_config["sqlserver"]["port"]};'
+                                  f'DATABASE={db_config["sqlserver"]["database"]};'
+                                  f'UID={db_config["sqlserver"]["user"]};'
+                                  f'PWD={db_config["sqlserver"]["password"]}')
+
             cursor = conn.cursor()
             return conn, cursor
         elif database_type == db_config['oracle']['source_jdbcUrl'] \
@@ -605,14 +606,42 @@ class MigrationData:  # 定义一个数据迁移类
 
 
 if __name__ == '__main__':
-    multiprocessing.freeze_support()  # 防止windows下运行报错
-    tables, split_columns = get_tables_and_split()
-    matched_tables = generate_all_table_json(source_database_type, target_database_type, tables, split_columns)
-    manager = multiprocessing.Manager()
-    lock = manager.Lock()
-    migrate = MigrationData()
-    t = threading.Thread(target=migrate.monitorTask, args=(migrate.exec_time,))  # 监控任务执行情况
-    t.daemon = False
-    t.start()
-    migrate.execJobs(job_path, num_processes, num_threads, matched_tables)
-
+    print("=========================================================================================")
+    print("||欢迎使用数据迁移工具，请选择是生成json文件并执行数据迁移或者生成json文件，默认生成json文件并执行数据迁移||")
+    print("=========================================================================================")
+    print("1.生成json文件并执行数据迁移")
+    print("2.生成json文件           ")
+    print("3.退出                  ")
+    print("=========================================================================================")
+    input_number = 0
+    # 循环输入数字，如果输入的不是1或者2或者3，则一直提示输入
+    while True:
+        input_num = input("请输入你的选择：")
+        if input_num == "1" or input_num == "":
+            multiprocessing.freeze_support()  # 防止windows下运行报错
+            tables, split_columns = get_tables_and_split()
+            matched_tables = generate_all_table_json(source_database_type, target_database_type, tables, split_columns)
+            manager = multiprocessing.Manager()
+            lock = manager.Lock()
+            migrate = MigrationData()
+            t = threading.Thread(target=migrate.monitorTask, args=(migrate.exec_time,))  # 监控任务执行情况
+            t.daemon = False
+            t.start()
+            migrate.execJobs(job_path, num_processes, num_threads, matched_tables)
+            exit()
+        if input_num == "2":
+            tables, split_columns = get_tables_and_split()
+            generate_all_table_json(source_database_type, target_database_type, tables, split_columns)
+            exit()
+        if input_num == "3":
+            exit()
+        else:
+            print("输入错误，请重新输入:")
+            input_number += 1
+            if input_number == 3:
+                print("输入错误次数超过3次，还有2次机会，请认真检查后再输入")
+            if input_number == 4:
+                print("输入错误次数超过4次，还有1次机会，请认真检查后再输入")
+            if input_number == 5:
+                print("再见！！！")
+                exit()
