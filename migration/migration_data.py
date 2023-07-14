@@ -10,9 +10,8 @@ import threading
 import time
 from concurrent.futures import as_completed
 import pyodbc
-#import cx_Oracle
+import oracledb
 import psycopg2
-import pymssql
 from tqdm import tqdm
 
 from config import *
@@ -53,7 +52,14 @@ def get_connection_and_cursor(database_type, db_config):
     try:
         if database_type == db_config['mysql']['source_jdbcUrl'] \
                 or database_type == db_config['mysql']['target_jdbcUrl']:
-            conn = pymysql.connect(**db_config['mysql'])
+            conn = pymysql.connect(
+                host=db_config['mysql']['host'],
+                port=db_config['mysql']['port'],
+                user=db_config['mysql']['user'],
+                password=db_config['mysql']['password'],
+                database=db_config['mysql']['database'],
+                charset=db_config['mysql']['charset']
+            )
             cursor = conn.cursor()
             return conn, cursor
         elif database_type == db_config['sqlserver']['source_jdbcUrl'] \
@@ -64,14 +70,17 @@ def get_connection_and_cursor(database_type, db_config):
                                   f'DATABASE={db_config["sqlserver"]["database"]};'
                                   f'UID={db_config["sqlserver"]["user"]};'
                                   f'PWD={db_config["sqlserver"]["password"]}')
-
             cursor = conn.cursor()
             return conn, cursor
         elif database_type == db_config['oracle']['source_jdbcUrl'] \
                 or database_type == db_config['oracle']['target_jdbcUrl']:
-            conn = cx_Oracle.connect(db_config['oracle']['user'],
-                                     db_config['oracle']['password'],
-                                     db_config['oracle']['dsn'])
+            if database_type == db_config['oracle']['source_jdbcUrl']:
+                dsn = db_config['oracle']['source_dsn']
+            else:
+                dsn = db_config['oracle']['target_dsn']
+            conn = oracledb.connect(user=db_config['oracle']['user'],
+                                    password=db_config['oracle']['password'],
+                                    dsn=dsn)
             cursor = conn.cursor()
             return conn, cursor
         elif database_type == db_config['gaussdb']['source_jdbcUrl'] \
@@ -88,7 +97,7 @@ def get_connection_and_cursor(database_type, db_config):
         else:
             raise ValueError("不支持的数据库类型。")
     except Exception as e:
-        logging.error(f"获取数据库连接和游标对象失败：{e}")
+        logging.error(f"连接数据库和获取游标失败，请检查网络后再试！：{e}")
         raise e
 
 
@@ -106,8 +115,7 @@ def close_connection_and_cursor(conn, cursor):
 def get_all_tables_source(source_database_type, tables):
     try:
         # 获取数据库连接和游标对象
-        conn, cursor = get_connection_and_cursor(
-            source_database_type, db_config)
+        conn, cursor = get_connection_and_cursor(source_database_type, db_config)
 
         if source_database_type == db_config['mysql']['source_jdbcUrl']:
             cursor.execute("SHOW TABLES")
@@ -382,6 +390,10 @@ def generate_table_json(source_database_type, target_database_type, source_table
     source_columns = get_table_columns_source(source_database_type, source_table_name)
     target_columns, split_column = get_table_columns_target(target_database_type, target_table_name
                                                             , split_columns)
+    if source_database_type == target_database_type:
+        # 判断源库和目标库、源表和目标表是否相同
+        if source_table_name == target_table_name:
+            raise ValueError("不能将数据从同一个库的同一张表迁移到自己，请选择不同的库或表作为源和目标，请检查后再试！")
     # 比较源库和目标库的字段个数是否相等,如果不相等则检查是哪张表的哪个字段不一致
     if len(source_columns) != len(target_columns):
         source_left = [col for col in source_columns if col.lower() not in [c.lower() for c in target_columns]]
@@ -407,6 +419,7 @@ def generate_all_table_json(source_database_type, target_database_type, tables, 
     source_tables = get_all_tables_source(source_database_type, tables)
     # 获取目标数据库的所有表名
     target_tables = get_all_tables_target(target_database_type, tables)
+
     # 判断source_tables和target_tables是否为空，如果为空直接返回
     if not source_tables or not target_tables:
         logging.warning("请检查源库表名或目标库表名是否为空!")
@@ -434,10 +447,15 @@ def generate_all_table_json(source_database_type, target_database_type, tables, 
         total_pbar.update(1)  # 更新总进度条
     # total_pbar.close()  # 关闭总进度条
     logging.info(f"总共生成了{successful_table}张表的JSON脚本文件，耗时{total_pbar.format_dict['elapsed']}s")
+
     if all(source_table.islower() for source_table in source_tables):
         matched_tables = [table.lower() for table in matched_tables]
+
     if all(source_table.isupper() for source_table in source_tables):
         matched_tables = [table.upper() for table in matched_tables]
+
+    if not matched_tables:
+        raise ValueError("没有找到匹配的表，请检查后再试")
 
     return matched_tables
 
@@ -607,9 +625,9 @@ class MigrationData:  # 定义一个数据迁移类
 
 if __name__ == '__main__':
     print("=========================================================================================")
-    print("||欢迎使用数据迁移工具，请选择是生成json文件并执行数据迁移或者生成json文件，默认生成json文件并执行数据迁移||")
+    print("||欢迎使用数据迁移工具，请选择是生成json文件并执行数据迁移或者生成json文件，<回车>默认||")
     print("=========================================================================================")
-    print("1.生成json文件并执行数据迁移")
+    print("1.生成json文件并执行数据迁移（*默认*）")
     print("2.生成json文件           ")
     print("3.退出                  ")
     print("=========================================================================================")

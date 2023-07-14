@@ -4,41 +4,41 @@ import os
 
 import pymysql
 
-# datax安装路径
-path_datax = os.path.join("../datax/bin/", "datax.py")
+
 num_processes = 4  # 最大进程数
 num_threads = 4  # 最大线程数
 
 # 配置数据库类型,选择数据源和目标源数据库类型，可选数据库类型有: 'mysql', 'sqlserver', 'oracle', 'gaussdb'
-source_db_type = 'gaussdb'  # 数据源
-target_db_type = 'sqlserver'  # 目标源
+source_db_type = 'oracle'  # 数据源
+target_db_type = 'mysql'  # 目标源
 
 
 # 数据源数据库信息
-sourceip = '10.201.65.21'  # host
-sourceport = '30100'  # 端口
-sourcedb = 'ygt'  # datebase
-sourceuser = 'ygt'  # 用户名
-sourcepw = 'ygtqwe123!@#'  # 密码
-reader = 'postgresqlreader'  # 配置json中的数据源读取器名称：readername
-'''
+sourceip = '10.81.1.96'  # host
+sourceport = 1521  # 端口
+sourcedb = 'orcl'  # datebase
+sourceuser = 'YGT'  # 用户名
+sourcepw = 'YGT'  # 密码
+reader = 'oraclereader'  # 配置json中的数据源读取器名称：readername
+
+'''  
 
 
 # 数据源数据库信息
 sourceip = '192.168.203.130'  # host
-sourceport = '1433'  # 端口
+sourceport = 1433  # 端口
 sourcedb = 'YGT'  # datebase
 sourceuser = 'sa'  # 用户名
 sourcepw = 'x032013x@..'  # 密码
-reader = 'sqlserverreader'  # 配置json中的数据源读取器名称：readername
+reader = 'mysqlreader'  # 配置json中的数据源读取器名称：readername
 '''
 # 目标源数据库信息
-targetip = '192.168.203.129'  # host
-targetport = '1433'  # 端口
-targetdb = 'YGT'  # datebase
-targetuser = 'sa'  # 用户名
-targetpw = 'x032013x@..'  # 密码
-writer = 'sqlserverwriter'  # 配置json中的数据源读取器名称：writername
+targetip = '127.0.0.1'  # host
+targetport = 3306  # 端口
+targetdb = 'jxc_erp'  # datebase
+targetuser = 'root'  # 用户名
+targetpw = 'root'  # 密码
+writer = 'mysqlwriter'  # 配置json中的数据源读取器名称：writername
 
 
 db_config = {
@@ -49,7 +49,6 @@ db_config = {
         'password': '{password}',
         'database': '{database}',
         'charset': 'utf8mb4',
-        'cursorclass': pymysql.cursors.DictCursor,
         # 添加 mysql 的 jdbc 连接字符串
         'source_jdbcUrl': "jdbc:mysql://{host}:{port}/{database}?useUnicode=true&characterEncoding=utf8",
         'target_jdbcUrl': "jdbc:mysql://{host}:{port}/{database}?useUnicode=true&characterEncoding=utf8",
@@ -72,7 +71,16 @@ db_config = {
     'oracle': {
         'user': '{user}',
         'password': '{password}',
-        'dsn': '{dsn}',  # 实例，例如oracle
+        'source_dsn': f"{sourceuser}/{sourcepw}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)"
+                      f"(HOST={sourceip})"
+                      f"(PORT={sourceport}))"
+                      f"(CONNECT_DATA=(SERVER=DEDICATED)"
+                      f"(SERVICE_NAME={sourcedb})))",
+        'target_dsn': f"{targetuser}/{targetpw}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)"
+                      f"(HOST={targetip})"
+                      f"(PORT={targetport}))"
+                      f"(CONNECT_DATA=(SERVER=DEDICATED)"
+                      f"(SERVICE_NAME={targetdb})))",
         # 添加 oracle 的 jdbc 连接字符串
         'source_jdbcUrl': "jdbc:oracle:thin:@{user}/{password}@{dsn}",
         'target_jdbcUrl': "jdbc:oracle:thin:@{user}/{password}@{dsn}",
@@ -119,3 +127,5 @@ job_path = './jobs'
 log_path = './logs'
 migration_tables = './migration_tables.txt'  # 存放需要迁移的表（表必须是一列，也就是一行一个，不要加标点符号）
 
+# datax安装路径
+path_datax = os.path.join("../datax/bin/", "datax.py")
